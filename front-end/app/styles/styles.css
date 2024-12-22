@@ -1,0 +1,20 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    height: 20vh; /* Chiều cao bằng chiều cao của viewport */
+}
+
+form {
+    width:100%; /* Đặt chiều rộng cho form */
+    padding: 20px; /* Thêm padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Đổ bóng cho form */
+    border-radius: 8px; /* Bo góc cho form */
+    background: #fff; /* Màu nền của form */
+}
+

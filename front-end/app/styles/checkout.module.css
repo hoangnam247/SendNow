@@ -1,0 +1,112 @@
+.checkoutContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .step,
+  .stepActive {
+    padding: 10px;
+    border-bottom: 2px solid #ccc;
+    width: 25%;
+    text-align: center;
+  }
+  
+  .stepActive {
+    border-bottom: 2px solid #FFA500;
+  }
+  
+  .checkoutContent {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  
+  /* Checkout Summary Section */
+  .checkoutSummary {
+    flex: 1;
+    background-color: #fff9f9;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+  }
+  
+  .discountSection {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .discountSection input {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .discountSection button {
+    background-color: #FFA500;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .totalSection {
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+  }
+  
+  .totalAmount {
+    color: red;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .continueButton {
+    width: 100%;
+    padding: 15px;
+    background-color: #00C853;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  
+  /* Mobile View */
+  @media (max-width: 768px) {
+    .checkoutContent {
+      flex-direction: column;
+    }
+    
+    .continueButton {
+      font-size: 1rem;
+    }
+  }
+  .productTableElement {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .productTableElement th,
+  .productTableElement td {
+    padding: 15px;
+    text-align: left;
+  }
+  
+  .productTableElement th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .productTableElement td {
+    border-bottom: 1px solid #ccc;
+  }
+  

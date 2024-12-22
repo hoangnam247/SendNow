@@ -1,0 +1,47 @@
+{
+  "name": "front-end",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^43.2.0",
+    "@ckeditor/ckeditor5-react": "^9.3.0",
+    "@headlessui/react": "^2.2.0",
+    "@heroicons/react": "^2.1.5",
+    "@nextui-org/react": "^2.6.8",
+    "@nextui-org/system": "^2.4.4",
+    "@nextui-org/theme": "^2.4.3",
+    "@nextui-org/tooltip": "^2.2.5",
+    "bootstrap": "^5.3.3",
+    "cookie": "^1.0.2",
+    "dayjs": "^1.11.13",
+    "framer-motion": "^11.15.0",
+    "front-end": "file:",
+    "grapesjs": "^0.21.13",
+    "grapesjs-preset-newsletter": "^1.0.2",
+    "lodash.debounce": "^4.0.8",
+    "next": "14.2.11",
+    "react": "^18",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-dom": "^18",
+    "react-loading-skeleton": "^3.5.0",
+    "react-router-dom": "^7.1.0",
+    "react-toastify": "^11.0.2",
+    "use-debounce": "^10.0.4"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.11",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13"
+  }
+}

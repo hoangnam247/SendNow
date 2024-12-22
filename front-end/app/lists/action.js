@@ -1,0 +1,42 @@
+"use server";
+
+import { cookies } from 'next/headers';
+
+export const handleCreateContactLists = async (formData) => {
+  // Retrieve the token from cookies
+  const token = cookies().get('token')?.value;
+
+
+  
+  // Check if the token exists
+  if (!token) {
+    throw new Error("Token không hợp lệ hoặc đã hết hạn.");
+  }
+
+  // Convert formData to an object
+  const data = Object.fromEntries(formData.entries());
+  console.log(data);
+  try {
+    // Make the POST request
+    const response = await fetch(`${process.env.SERVER_API}/lists`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`, // Include the token in the request
+      },
+      body: JSON.stringify(data),
+    });
+
+    const responseBody = await response.json();
+
+    if (responseBody.success) {
+      return true;
+    }
+
+    return false;
+  } catch (error) {
+    console.error("Lỗi khi gọi API:", error);
+    throw new Error("Đã xảy ra lỗi khi tạo danh sách.");
+  }
+};

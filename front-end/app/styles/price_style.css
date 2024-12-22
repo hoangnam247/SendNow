@@ -1,0 +1,183 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .description {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 40px;
+  }
+  
+  .pricingCards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    margin: 10px;
+    text-align: left;
+  }
+  
+  .card h2 {
+    font-size: 24px;
+    color: #f39c12;
+  }
+  
+  .subheading {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 20px;
+  }
+  
+  .price {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .button {
+    background-color: #8e44ad;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #732d91;
+  }
+  
+  .checkout-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .step {
+    padding: 10px;
+    border-bottom: 2px solid #ccc;
+    width: 25%;
+    text-align: center;
+  }
+  
+  .step.completed {
+    border-bottom: 2px solid #FFA500;
+  }
+  
+  .cart-summary {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .price {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .discount-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .discount-section input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .discount-section button {
+    padding: 10px 20px;
+    background-color: #FFA500;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .total-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .total-amount {
+    color: red;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .continue-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #00C853;
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  @media (max-width: 768px) {
+    .steps {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .step {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .discount-section {
+      flex-direction: column;
+    }
+  
+    .discount-section input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .continue-button {
+      font-size: 1rem;
+    }
+  }
+  
