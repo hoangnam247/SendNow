@@ -21,3 +21,5 @@ Hệ thống Email Marketing là một nền tảng web-based cho phép doanh ng
 ![email_01](https://github.com/Tui-Ten-Nam/SendNow/blob/1b02482ab8fa0929f04363f742cd2c0dd811a70b/queu.png)
 #### 🖼️ Ảnh được lưu trữ trên hệ thống Cloud Storage của Long Vân để tối ưu quản lý và truy xuất.
 - Hình ảnh có thể hiển thị trực tiếp trong nội dung email hoặc tải từ một liên kết bên ngoài.
+![email_01](https://github.com/Tui-Ten-Nam/SendNow/blob/b4e377543e80cfa5dc3c124ed11f5845c7884dca/s3longvan.png)
+  
