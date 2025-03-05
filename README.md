@@ -17,5 +17,7 @@ Hệ thống Email Marketing là một nền tảng web-based cho phép doanh ng
 #### 📧 Gửi email theo lịch trình (Schedule) và xử lý qua hàng đợi (Queue 
 - Email không được gửi ngay lập tức mà đưa vào hàng đợi xử lý theo thứ tự.
 ![email_01](https://github.com/Tui-Ten-Nam/SendNow/blob/d07dfa3e0c49d322e5b206f14402b63658f8c74f/schedule.png)
+- Email không được gửi ngay lập tức mà đưa vào hàng đợi xử lý theo thứ tự.
+![email_01](https://github.com/Tui-Ten-Nam/SendNow/blob/1b02482ab8fa0929f04363f742cd2c0dd811a70b/queu.png)
 #### 🖼️ Ảnh được lưu trữ trên hệ thống Cloud Storage của Long Vân để tối ưu quản lý và truy xuất.
 - Hình ảnh có thể hiển thị trực tiếp trong nội dung email hoặc tải từ một liên kết bên ngoài.
