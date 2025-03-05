@@ -11,7 +11,8 @@ Hệ thống Email Marketing là một nền tảng web-based cho phép doanh ng
 - Bảo mật cao hơn. 
 - 💡 Theo dõi & phân tích ( Người dùng đã nhận chưa , đã xem chưa , họ có nhấp vào link không ). Hiện tại, tính năng đang trong quá trình phát viển và sẽ được cập nhật sớm. 
 -  Tăng tính tin cậy tránh việc thư vào mục "Thư Rác" (Spam).
-  ![ab](https://s3-hcm5-r1.longvan.net/emailmarketing/email_01.png)
+  ![Hình ảnh Email](https://s3-hcm5-r1.longvan.net/emailmarketing/email_01.png)
+
 #### 📧 Gửi email theo lịch trình (Schedule) và xử lý qua hàng đợi (Queue).
 - Email có thể được gửi vào một thời điểm cụ thể thay vì ngay lập tức.
 - Email không được gửi ngay lập tức mà đưa vào hàng đợi xử lý theo thứ tự.
