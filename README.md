@@ -11,6 +11,7 @@ Hệ thống Email Marketing là một nền tảng web-based cho phép doanh ng
 - Bảo mật cao hơn. 
 - 💡 Theo dõi & phân tích ( Người dùng đã nhận chưa , đã xem chưa , họ có nhấp vào link không ). Hiện tại, tính năng đang trong quá trình phát viển và sẽ được cập nhật sớm. 
 -  Tăng tính tin cậy tránh việc thư vào mục "Thư Rác" (Spam).
+-  
   ![email_01](https://github.com/Tui-Ten-Nam/SendNow/blob/e846dc851c86647a0e57f381638a3897205ba470/email_00.png)
   ![email_01](https://github.com/Tui-Ten-Nam/SendNow/blob/a51d4032b179d69fe1690e8ef0b201bb7d780bf5/email_01.png)
 #### 📧 Gửi email theo lịch trình (Schedule) và xử lý qua hàng đợi (Queue).
