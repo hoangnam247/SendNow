@@ -4,9 +4,9 @@ Hệ thống Email Marketing là một nền tảng web-based cho phép doanh ng
 ## Tính năng nổi bật.
 ### Tạo và thiết kế email bằng GrapesJs.
 #### Sử dụng GrapesJs framework mã nguồn mở giúp xây dựng trình chỉnh sửa web (web editor) trực quan, phổ biến. 
-  • Tùy chỉnh sửa kéo-thả (Drag & Drop Editor).
-  • Nội dung được chia thành HTML và CSS để dễ dàng quản lý.  
-  • Hình ảnh sẽ được lưu trữ trên cloud storage (lưu trữ đám mây).
+- Tùy chỉnh sửa kéo-thả (Drag & Drop Editor).  
+- Nội dung được chia thành HTML và CSS để dễ dàng quản lý.  
+- Hình ảnh sẽ được lưu trữ trên cloud storage (lưu trữ đám mây).
 #### Gửi email qua API của Resend.
   •  Tốc độ gửi nhanh hơn.
   •  Bảo mật cao hơn. 
