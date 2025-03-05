@@ -17,4 +17,3 @@ Hệ thống Email Marketing là một nền tảng web-based cho phép doanh ng
 #### 🖼️ Ảnh được lưu trữ trên hệ thống Cloud Storage của Long Vân để tối ưu quản lý và truy xuất.
 - Hình ảnh có thể hiển thị trực tiếp trong nội dung email hoặc tải từ một liên kết bên ngoài.
 
-## Email Marketing Screenshots
