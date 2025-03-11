@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from "react";
 import {
   Dialog,
   DialogPanel,
@@ -19,36 +19,41 @@ import {
   ChartPieIcon,
   ClipboardDocumentListIcon,
   UsersIcon,
-  SquaresPlusIcon,
+  UserCircleIcon ,
   XMarkIcon,
+
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import Image from "next/image";
+import { useToken } from '@/app/contexts/TokenContext';
 
 const products = [
-  { name: 'Tổng quan', description: 'Khám phá các chỉ số và dữ liệu quan trọng để hiểu khách hàng của doanh nghiệp.', href: '/lists', icon: ChartBarIcon },
+  { name: 'Tổng quan', description: 'Khám phá các chỉ số và dữ liệu quan trọng để hiểu khách hàng của doanh nghiệp.', href: '/audience/overview', icon: ChartBarIcon },
   { name: 'Dach sách', description: 'Danh sách khách hàng ', href: '/lists', icon: ClipboardDocumentListIcon },
   { name: 'Liên hệ', description: 'Danh sách các liên hệ', href: '/lists', icon: UsersIcon },
 ]
 
 
-export default function Example({ user }) {
+export default function Example() {
+  const { user } = useToken();   
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [openDropdown, setOpenDropdown] = useState(false);
+  
   // Hàm toggle dropdown
   const toggleDropdown = () => {
     setOpenDropdown(!openDropdown);
   };
   
   return (
-    <header className="bg-white">
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+<header className="bg-white shadow w-full sticky top-0 left-0 z-50">
+<nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5"> 
-            <span className="sr-only">ABV</span>
-            <img
-              alt=""
-              src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-              className="h-8 w-auto"
+          <a href="/" className="-m-1.5 p-1.5"> 
+            <span className="sr-only">ZoZo</span>
+            <Image
+              src="/images/zozo.png" // Đường dẫn tuyệt đối từ thư mục public
+              alt="ZoZo Logo"
+              width={100} // Đặt kích thước ảnh
+              height={100}
             />
           </a>
         </div>
@@ -63,15 +68,16 @@ export default function Example({ user }) {
           </button>
         </div>
 
+        {user ? (
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-        <a href="#" className="text-sm/6 font-semibold text-gray-900">
+        <a href="/overview" className="text-lg font-semibold text-gray-900 hover:text-orange-600 transition">
             Tổng quan
         </a>
-        <a href="#" className="text-sm/6 font-semibold text-gray-900">
+        <a href="/campaigns" className="text-lg font-semibold text-gray-900 hover:text-orange-600 transition">
             Chiến dịch
         </a>
           <Popover className="relative">
-            <PopoverButton className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900">
+            <PopoverButton className="flex items-center gap-x-1 text-lg font-semibold text-gray-900 hover:text-orange-600 transition">
               Khách hàng
               <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-400" />
             </PopoverButton>
@@ -103,12 +109,32 @@ export default function Example({ user }) {
             </PopoverPanel>
           </Popover>
         </PopoverGroup>
+        ) : (
+          <PopoverGroup className="hidden lg:flex lg:gap-x-12">
+          <a href="/overview" className="text-lg font-semibold text-gray-900 hover:text-orange-600 transition">
+              Bảng giá
+          </a>
+          <a href="/campaigns" className="text-lg font-semibold text-gray-900 hover:text-orange-600 transition">
+             Hướng dẫn
+          </a>
+          <a href="/campaigns" className="text-lg font-semibold text-orange-600 hover:text-gray-900 transition">
+             Dùng thử
+          </a>
+          <a href="/campaigns" className="text-lg font-semibold text-gray-900 hover:text-orange-600 transition">
+             Cộng đồng Email marketing
+          </a>
+          </PopoverGroup>
+        )}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-        {user ? (
-              <span className="text-sm">{user.name}</span>
+        {user ? (        
+          <span className="text-lg flex items-center">
+            <UserCircleIcon className="h-8 w-8 text-gray-500 mr-2" /> {/* `mr-2` tạo khoảng cách giữa icon và tên */}
+            {user.name}
+          </span>
+
           ) : (
-            <a href="#" className="text-sm/6 font-semibold text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
+            <a href="/auth/login" className="text-lg font-semibold text-gray-900 hover:text-orange-600 transition ">
+            Đăng Nhập
           </a>
           )}
         </div>
@@ -139,13 +165,13 @@ export default function Example({ user }) {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
               <a
-                  href="#"
+                  href="/overview"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
                 Tổng quan                
                 </a>
                 <a
-                  href="#"
+                  href="/campaigns"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
                 Chiến dịch
@@ -178,7 +204,7 @@ export default function Example({ user }) {
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
-                  Log in
+                  Đăng Nhập
                 </a>
                 )}
               </div>

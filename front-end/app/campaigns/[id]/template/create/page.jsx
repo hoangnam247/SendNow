@@ -14,7 +14,7 @@ export default function EmailTemplate() {
   const [currentPage, setCurrentPage] = useState(1); // Trang hiện tại
   const [showTemplates, setShowTemplates] = useState(false);
   const [emailTemplates, setEmailTemplates] = useState([]);
-  const token = useToken();
+  const  { token } = useToken();
   const { id } = useParams(); // Lấy campaign ID từ URL
   const [loading, setLoading] = useState(true);
   const router = useRouter();

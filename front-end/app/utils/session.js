@@ -11,19 +11,30 @@ export const setSession = async (token, user) => {
 };
 
 export const getSession = async () => {
-    const token = cookies().get("token")?.value;
+    // Sử dụng dynamic API trên server-side
+    const cookieStore = await cookies();
     
-    const response = await fetch (`${process.env.APP_URL}/api/session`,{
+    const token = cookieStore.get("token")?.value;
+    
+
+    if (!token) {
+        return false; // Nếu không có token, trả về false
+    }
+
+    const response = await fetch(`${process.env.APP_URL}/api/session`, {
         headers: {
-            token : token,
+            token: token,
         },
     });
-    if(!response.ok){
+
+    if (!response.ok) {
         return false;
     }
-    const {user} = await response.json();
-    if(!user){
+
+    const { user } = await response.json();
+    if (!user) {
         return false;
     }
+
     return { user, token };
 };

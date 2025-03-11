@@ -8,7 +8,7 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'; // Import style
 
 export default function CampaignPage() {
-  const token = useToken();
+  const  { token } = useToken();
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
   const [lists, setLists] = useState([]); // Danh sách các chiến dịch

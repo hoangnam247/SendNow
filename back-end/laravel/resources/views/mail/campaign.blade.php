@@ -1,16 +1,15 @@
-<x-mail::message>
-# Introduction
-
-{!! $campaignContent !!}  <!-- Hiển thị nội dung từ cột content trong campaigns -->
-
-<img src="{{ $message->embed(public_path('images/cmnm.jpg')) }}" alt="Hình ảnh mẫu" width="300" height="auto">
-
-
-<x-mail::button :url="''">
-Campaigns Email
-
-</x-mail::button>
-
-Thanks,<br>
-{{ config('app.name') }}
-</x-mail::message>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Email</title>
+    <style>
+        {!! $cssContent !!}  <!-- Chèn CSS từ cơ sở dữ liệu vào đây -->
+    </style>
+</head>
+<body>
+    <!-- Hiển thị nội dung của chiến dịch -->
+    <div>{!! $campaignContent !!}</div>
+</body>
+</html>

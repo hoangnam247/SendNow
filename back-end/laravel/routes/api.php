@@ -35,6 +35,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('contacts', ContactController ::class);
+    Route::put('/contacts/{id}/status', [ContactController::class, 'updateStatus']);
+    Route::get('/contact/{id}/statistics', [ContactController::class, 'getMonthlyStatistics']);
+
 });
 
 
@@ -45,4 +48,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/send-campaign-email', [CampaignEmailController::class, 'sendCampaignEmail']);
+    Route::post('/upload-image', [CampaignEmailController::class, 'uploadImage']);
 });
+

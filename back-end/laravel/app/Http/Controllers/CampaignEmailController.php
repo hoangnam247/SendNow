@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Mail\CampaignEmail;
 use App\Models\Campaign;
-use App\Models\ContactList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class CampaignEmailController extends Controller
 {
@@ -51,7 +52,21 @@ class CampaignEmailController extends Controller
     return response()->json(['message' => 'Campaign emails sent successfully!']);
 
     }
-    
+
+
+    public function uploadImage(Request $request)
+    {
+        $path = $request->file('image')->store('images');
+
+        return response()->json([
+
+            'path' =>  "https://s3-hcm5-r1.longvan.net/emailmarketing/$path",
+            'msg' => 'success',
+        ]);
+
+    }
+    //
+
 }
 
 

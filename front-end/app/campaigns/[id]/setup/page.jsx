@@ -10,7 +10,7 @@ import NavigationBar from '@/app/_components/NavigationBar';
 export default function CampaignSettings() {
   const { id } = useParams();
   const router = useRouter();
-  const token = useToken();
+  const  { token } = useToken();
 
   const [name, setName] = useState('');
   const [senderName, setSenderName] = useState('');

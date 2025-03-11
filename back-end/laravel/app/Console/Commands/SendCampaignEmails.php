@@ -40,9 +40,8 @@ class SendCampaignEmails extends Command
             // Lặp qua danh sách contacts để gửi email
             foreach ($contacts as $contact) {
                 try {
-                    // Sử dụng Queue để gửi email
-                    // Mail::to($contact->email)
-                    //     ->queue(new CampaignEmail($campaign->id, $senderEmail));
+                    Mail::to($contact->email)
+                        ->queue(new CampaignEmail($campaign->id, $senderEmail));
 
                     Log::info('Queued email for ' .$campaign->id. $contact->email); // Log địa chỉ email đã được gửi
 

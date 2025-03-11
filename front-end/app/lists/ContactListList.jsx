@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from "react";
 import { debounce } from '../utils/utils';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from "next/link";
@@ -13,11 +13,12 @@ import {
   PencilIcon,
   TrashIcon
 } from '@heroicons/react/24/outline';
-import { useToken } from '@/app/contexts/TokenContext';
+
 
 import { toast, ToastContainer } from "react-toastify"; // Import Toast từ react-toastify
 import "react-toastify/dist/ReactToastify.css"; // Import CSS của Toastify
 import {Tooltip} from "@nextui-org/tooltip";
+import { useToken } from '../contexts/TokenContext';
 
 const ContactListsList = ({ lists, total, current, pageSize, query }) => {
   const [currentPage, setCurrentPage] = useState(current);
@@ -26,7 +27,7 @@ const ContactListsList = ({ lists, total, current, pageSize, query }) => {
   const [error, setError] = useState('');
   const router = useRouter();
   const searchParams = useSearchParams();
-  const token = useToken();
+  const  { token } = useToken();
   useEffect(() => {
     // Cập nhật lại khi trang thay đổi
     setCurrentPage(current);
@@ -55,6 +56,22 @@ const ContactListsList = ({ lists, total, current, pageSize, query }) => {
   };
 
   const [dropdownOpen, setDropdownOpen] = useState(null); // Trạng thái kiểm soát menu dropdown
+  const dropdownRef = useRef(null); // Tạo ref cho dropdown
+
+  // Đóng dropdown khi click ra ngoài
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(null); // Đóng dropdown nếu click ra ngoài
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
 
   const toggleDropdown = (index) => {
     setDropdownOpen((prev) => (prev === index ? null : index)); // Đóng/mở dropdown theo từng dòng
@@ -93,7 +110,7 @@ const handleRemoveContactList = async (id) => {
       // Hiển thị thông báo thành công
       toast.success("Xóa danh sách thành công!", {
         position: "top-right",
-        autoClose: 2000, // Đóng tự động sau 2 giây
+        autoClose: 1500, // Đóng tự động sau 2 giây
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -103,7 +120,7 @@ const handleRemoveContactList = async (id) => {
       // Hiển thị thông báo lỗi nếu xóa thất bại
       toast.error("Đã có lỗi xảy ra. Vui lòng thử lại sau.", {
         position: "top-right",
-        autoClose: 3000, // Đóng tự động sau 3 giây
+        autoClose: 1500, // Đóng tự động sau 3 giây
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -131,13 +148,19 @@ const handleRemoveContactList = async (id) => {
           {initialLists?.data?.length > 0 && initialLists?.data?.map((list, index) => (
             <tr key={index} className="border-b">
               <td className="px-4 py-2">
-                {list.list_name}
+              <Link
+                  href={`/lists/${list.id}/overview`}
+                  className="text-teal-700 hover:text-blue-700 text-xl	"
+                >
+                  {list.list_name}
+                </Link>
+                
                 <p className="text-gray-400">Ngày tạo: {list.created_at}</p>
               </td>
               <td className="px-4 py-2 text-center">
                 <Link
                   href={`/lists/${list.id}/subscribers`}
-                  className="text-teal-500 hover:underline"
+                  className="text-teal-700 hover:text-blue-700 text-xl"
                 >
                   {list.contacts_count}
                 </Link>
@@ -174,7 +197,7 @@ const handleRemoveContactList = async (id) => {
 
                     {/* Dropdown menu */}
                     {dropdownOpen === index && (
-                      <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                      <div ref={dropdownRef}  className="absolute top-full right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
                     <ul className="py-1">
                       <li>
                         <button

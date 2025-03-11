@@ -11,7 +11,7 @@ export default function CampaignEmailTemplate() {
   const { id } = useParams();
   const [campaignData, setCampaignData] = useState(null); // state mới
   const [loading, setLoading] = useState(true);
-  const token = useToken();
+  const  { token } = useToken();
 
   const [selectedTemplate, setSelectedTemplate] = useState({
     id: 1,
@@ -122,10 +122,7 @@ const fetchCampaignData = async () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="text-center py-6 text-gray-400 border-t mt-10">
-        © 2021. Powered by Zozo
-      </div>
+    
     </div>
   );
 }

@@ -84,32 +84,31 @@ class ContactListsController extends Controller
     public function store(ContactListRequest $request,)
     {
         try {
-            // Kiểm tra quyền tạo danh sách liên hệ (Policy)
-            $this->authorize('create', ContactList::class);
-    
             // Tạo danh sách liên hệ với dữ liệu được xác thực
             $validated = $request->validated();
             $validated['user_id'] = $request->user()->id;
-            
+                
+            // Tạo ContactList
             $contactList = ContactList::create($validated);
-    
+        
             // Trả về phản hồi JSON thành công
             return response()->json([
                 'success' => true,
                 'data' => $contactList,
                 'message' => 'Contact list created successfully.',
             ], 201);
-    
+        
         } catch (\Exception $e) {
             // Ghi log lỗi để dễ dàng debug
             Log::error('Error creating contact list: ' . $e->getMessage());
-    
+        
             // Trả về phản hồi lỗi
             return response()->json([
                 'success' => false,
                 'message' => 'An error occurred while creating the contact list.',
             ], 500);
         }
+        
     }
 
     /**

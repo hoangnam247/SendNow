@@ -32,7 +32,7 @@ class ContactListPolicy
     public function create(User $user,ContactList $contactList): bool
     {
         // Chỉ người dùng sở hữu danh sách liên hệ được phép tạo
-        return $user->id === $contactList->user_id;
+        return true;
     }
 
     /**

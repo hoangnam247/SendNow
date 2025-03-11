@@ -1,6 +1,12 @@
+"use client"
 import Form from "./Form"; // Đảm bảo đường dẫn đến file Form.jsx là chính xác
+import { useRouter } from "next/navigation"; // Import useRouter để reload dữ liệu
 
 export default function TaoDanhSach() {
+  const router = useRouter(); // Dùng để cập nhật dữ liệu trang sau khi thêm danh sách
+  const handleListCreated = () => {
+    router.refresh(); // Cập nhật lại dữ liệu trang sau khi tạo danh sách
+  };
   return (
     <div className="min-h-screen bg-gray-50">
       <main className="max-w-5xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-8">
@@ -29,7 +35,7 @@ export default function TaoDanhSach() {
         </div>
 
         {/* Form Component */}
-        <Form />
+        <Form onListCreated={handleListCreated} />
       </main>
     </div>
   );

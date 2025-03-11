@@ -6,14 +6,14 @@ import { createContext, useContext } from "react";
 // Tạo Context
 const TokenContext = createContext();
 
-// Custom hook để sử dụng Context
-export const useToken = () => useContext(TokenContext);
-
-// Provider để bọc ứng dụng và cung cấp token
-export const TokenProvider = ({ token, children }) => {
+export const TokenProvider = ({ token, user, children }) => {
   return (
-    <TokenContext.Provider value={token}>
+    <TokenContext.Provider value={{ token, user }}>
       {children}
     </TokenContext.Provider>
   );
+};
+
+export const useToken = () => {
+  return useContext(TokenContext);
 };

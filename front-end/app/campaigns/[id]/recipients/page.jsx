@@ -8,7 +8,7 @@ import NavigationBar from '@/app/_components/NavigationBar';
 
 export default function CampaignDetail() {
   const { id } = useParams();
-  const token = useToken();
+  const  { token } = useToken();
   const router = useRouter();
 
   const [campaign, setCampaign] = useState(null);
@@ -99,7 +99,7 @@ export default function CampaignDetail() {
   }
  
   return (
-    <div className="p-6 max-w-screen-lg mx-auto">
+    <div className="p-6 max-w-screen-lg mx-auto ">
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-4">
         <ol className="flex space-x-2">

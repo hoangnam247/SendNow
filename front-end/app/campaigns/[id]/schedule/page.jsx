@@ -16,7 +16,7 @@ dayjs.extend(timezone);
 
 export default function CampaignDetail() {
   const { id } = useParams();
-  const token = useToken();
+  const  { token } = useToken();
   const router = useRouter();
 
   const [campaign, setCampaign] = useState(null);
@@ -174,7 +174,7 @@ export default function CampaignDetail() {
       </div>
 
       {/* Nút Lưu và Tiếp tục */}
-      <div className="mt-6 flex justify-end">
+      <div className="mt-6 flex justify-end mt-48">
         <button
           onClick={handleSaveAndContinue}
           className="bg-[#1e293b] text-white px-6 py-3 rounded-full shadow-lg transform transition-all duration-300 hover:bg-[#020617] hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"

@@ -146,6 +146,14 @@ class CampaignsController extends Controller
             // Logic to associate campaign with a contact group
             $campaign->content = $request->input('content');
         }
+        if ($request->has('css_content')) {
+            // Logic to associate campaign with a contact group
+            $campaign->css_content = $request->input('css_content');
+        }
+        if ($request->has('json_content')) {
+            // Logic to associate campaign with a contact group
+            $campaign->json_content = $request->input('json_content');
+        }
         if ($request->has('scheduled_at')) {
             // Logic to associate campaign with a contact group
             $campaign->scheduled_at = $request->input('scheduled_at');
@@ -183,11 +191,15 @@ class CampaignsController extends Controller
     
         // Lấy nội dung từ email_templates nếu tồn tại email_template_id
         $emailTemplateContent = null;
+        $emailTemplate_css_content = null;
+        $emailTemplate_json_content = null;
         if ($campaign->email_template_id) {
             // Tìm email template dựa trên email_template_id
             $emailTemplate = \App\Models\EmailTemplate::find($campaign->email_template_id);
             if ($emailTemplate) {
                 $emailTemplateContent = $emailTemplate->template_content; // Lấy dữ liệu từ cột template_content
+                $emailTemplate_css_content = $emailTemplate->template_css_content; // Lấy dữ liệu từ cột template_content
+                $emailTemplate_json_content = $emailTemplate->template_json_content; // Lấy dữ liệu từ cột template_content
             }
         }
     
@@ -201,6 +213,8 @@ class CampaignsController extends Controller
             'data' => [
                 'campaign' => $campaign, // Chi tiết chiến dịch
                 'email_template_content' => $emailTemplateContent, // Nội dung từ bảng email_templates
+                'email_template_css_content' => $emailTemplate_css_content,
+                'email_template_json_content' => $emailTemplate_json_content, 
                 'final_content' => $finalContent, // Nội dung hiển thị cuối cùng
             ],
             'message' => 'Campaign with email template content retrieved successfully',

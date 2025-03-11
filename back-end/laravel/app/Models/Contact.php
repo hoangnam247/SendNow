@@ -11,7 +11,7 @@ class Contact extends Model
 
     protected $table = 'contacts';
 
-    protected $fillable = [ 'user_id','email','fullname','created_at','updated_at'];
+    protected $fillable = [ 'user_id','email','full_name', 'status','created_at','updated_at'];
 
     // Quan hệ Many-to-Many với ContactList thông qua bảng contact_list_contacts
     public function contactLists()

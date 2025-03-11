@@ -14,5 +14,6 @@ const CampaignCreatePage = () => {
     </div>
   );
 };
+CampaignCreatePage.getLayout = (page) => <>{page}</>;
 
 export default CampaignCreatePage;

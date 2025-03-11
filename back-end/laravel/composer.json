@@ -10,8 +10,12 @@
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "laravel/ui": "^4.6",
+        "league/flysystem-aws-s3-v3": "3.0",
+        "neverbounce/neverbounce-php": "^4.5",
         "resend/resend-laravel": "^0.15.0",
-        "resend/resend-php": "^0.14.0"
+        "resend/resend-php": "^0.14.0",
+        "tijsverkoyen/css-to-inline-styles": "^2.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
