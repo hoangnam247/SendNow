@@ -24,4 +24,4 @@ Hệ thống Email Marketing là một nền tảng web-based cho phép doanh ng
 ![s3longvan](https://github.com/Tui-Ten-Nam/SendNow/blob/b4e377543e80cfa5dc3c124ed11f5845c7884dca/s3longvan.png)
   
 ## 📌 Kết quả email
-![email_final](https://github.com/Tui-Ten-Nam/SendNow/blob/65fca4dc441c674e88757ae84e2aafd154396fb1/email_final.png)
+![email_final](https://github.com/Tui-Ten-Nam/SendNow/blob/49defb813854fe642379177193aae6a6f9d4b665/email_result.png)
