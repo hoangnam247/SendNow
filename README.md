@@ -27,5 +27,24 @@ Hệ thống Email Marketing là một nền tảng web-based cho phép doanh ng
 ![email_final](https://github.com/Tui-Ten-Nam/SendNow/blob/49defb813854fe642379177193aae6a6f9d4b665/email_result.png)
 
 ## Screenshots
-### Page
+### Trang chủ
 https://github.com/user-attachments/assets/9594aaa5-4981-49e7-8a81-69b60fdea8d3
+### Danh mục khách hàng
+![customer_list](https://github.com/Tui-Ten-Nam/SendNow/blob/89952a85ce1e6005509a10bc04b51422fb2ed9d1/list.png)
+### Danh sách khách hàng (liên hệ)
+![customer](https://github.com/Tui-Ten-Nam/SendNow/blob/43bc961b0b76491422fff989cc12763634ef2be4/customer.png)
+### Chiến dịch
+#### Danh sách
+![campagins](https://github.com/Tui-Ten-Nam/SendNow/blob/7080818241a92613dedd6fed0ea4d4483186d4a6/campaigns.png)
+#### Người nhận
+![recipients](https://github.com/Tui-Ten-Nam/SendNow/blob/27381ec7dc8e34d696f478146ddc52e6ad7e181e/recipients.png)
+#### Cài đặt
+![setup](https://github.com/Tui-Ten-Nam/SendNow/blob/cb9d36a7a19613676108d5a8548e63d293d3edad/setup1.png)
+#### Nội dung Email
+![template](https://github.com/Tui-Ten-Nam/SendNow/blob/5ed204ca20f726f2e053bf5219c30957317f53df/template.png)
+![template_edit](https://github.com/Tui-Ten-Nam/SendNow/blob/802d16d6c4ad7e8f1fe493e5eb514e1dafee44e1/template_edit.png)
+#### Lịch trình
+![schedule](https://github.com/Tui-Ten-Nam/SendNow/blob/2f8ecfd2b5218ac84dd78a1e205eb53be48206c4/schedule.png)
+
+
+
