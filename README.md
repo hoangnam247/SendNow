@@ -28,3 +28,4 @@ Hệ thống Email Marketing là một nền tảng web-based cho phép doanh ng
 
 ## Screenshots
 ### Page
+[video](https://github.com/Tui-Ten-Nam/SendNow/blob/f0797d4c5beadca0a89cf80faaa0a6ef8b016ff5/ZoZo%20-%20Google%20Chrome%202025-03-11%2020-25-09.mp4)
