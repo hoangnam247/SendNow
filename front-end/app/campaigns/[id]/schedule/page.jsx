@@ -28,7 +28,7 @@ export default function CampaignDetail() {
   // Fetch dữ liệu chiến dịch
   const fetchCampaign = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -80,7 +80,7 @@ export default function CampaignDetail() {
       .format('YYYY-MM-DD HH:mm:ss');
 
       
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token}`,

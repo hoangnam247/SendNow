@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 
 export const handleLogin = async (formData) => {
     const form = Object.fromEntries(formData);
-    const response = await fetch (`${process.env.NEXT_PUBLIC_API_URL}/auth/login`,{
+    const response = await fetch (`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,{
         method : "POST",
         headers: {
             "Content-Type" : "application/json",

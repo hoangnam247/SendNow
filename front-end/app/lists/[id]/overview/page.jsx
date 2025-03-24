@@ -91,7 +91,7 @@ export default function ContactPage({ params }) {
   useEffect(() => {
     async function fetchStatistics() {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contact/${id}/statistics`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact/${id}/statistics`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,

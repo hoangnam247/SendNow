@@ -79,7 +79,7 @@ const ContactListsList = ({ lists, total, current, pageSize, query }) => {
 
   const removeContactList = async (id) => {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/lists/${id}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/lists/${id}`, {
             method: "DELETE",
             headers: {
               Authorization: `Bearer ${token}`,

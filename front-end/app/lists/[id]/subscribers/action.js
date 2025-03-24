@@ -19,7 +19,7 @@ export const handleCreateSubscriber = async (formData) => {
   console.log(data);
   try {
     // Make the POST request
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacts`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contacts`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ export const handleCreateSubscriber = async (formData) => {
 };
 
 export async function fetchLists(token) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/lists`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/lists`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -59,7 +59,7 @@ export async function fetchLists(token) {
 }
 
 export async function fetchContacts(listId, token) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/lists/${listId}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/lists/${listId}`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,

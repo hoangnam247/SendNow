@@ -22,14 +22,14 @@ export default function CampaignDetail() {
   const fetchCampaignAndGroups = async () => {
     try {
       const [campaignResponse, groupsResponse] = await Promise.all([
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
         }),
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/lists`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/lists`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,
@@ -72,7 +72,7 @@ export default function CampaignDetail() {
   // Hàm xử lý lưu và tiếp tục
   const handleSaveAndContinue = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token}`,

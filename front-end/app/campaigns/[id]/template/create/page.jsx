@@ -24,7 +24,7 @@ export default function EmailTemplate() {
   // Hàm gọi API để lấy thông tin chiến dịch
   const fetchCampaignData = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -50,7 +50,7 @@ export default function EmailTemplate() {
   // Hàm lấy danh sách mẫu email từ API
 const fetchEmailTemplates = async (query = '', page = 1) => {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/email-template?q=${query}&page=${page}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/email-template?q=${query}&page=${page}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -90,7 +90,7 @@ const fetchEmailTemplates = async (query = '', page = 1) => {
   const handleSubmit = async (templateId) => {
     try {
       // Fetch dữ liệu chiến dịch hiện tại để kiểm tra email_template_id có tồn tại không
-      const responseCampaign = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}`, {
+      const responseCampaign = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -104,7 +104,7 @@ const fetchEmailTemplates = async (query = '', page = 1) => {
         // Kiểm tra nếu campaign đã có email_template_id
         if (campaignData.data.email_template_id) {
           // Nếu đã có email_template_id, update với templateId mới và làm trống content
-          const updateResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}`, {
+          const updateResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
             method: 'PUT',
             headers: {
               Authorization: `Bearer ${token}`,
@@ -129,7 +129,7 @@ const fetchEmailTemplates = async (query = '', page = 1) => {
           }
         } else {
           // Nếu campaign chưa có email_template_id, chỉ cần update email_template_id
-          const createResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}`, {
+          const createResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
             method: 'PUT',
             headers: {
               Authorization: `Bearer ${token}`,

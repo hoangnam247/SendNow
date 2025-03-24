@@ -7,7 +7,7 @@ import { cookies } from 'next/headers';
 const getLists = async (token, current, pageSize, query) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/lists?current=${current}&pageSize=${pageSize}&query=${query}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/lists?current=${current}&pageSize=${pageSize}&query=${query}`,
       {
         method: "GET",
         headers: {

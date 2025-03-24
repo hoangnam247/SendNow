@@ -10,7 +10,7 @@ export const debounce = (callack, timeout = 500) => {
 };
 
 export const getProfile = async (token) => {
-    const response = await fetch (`${process.env.NEXT_PUBLIC_API_URL}/auth/profile`, {
+    const response = await fetch (`${process.env.NEXT_PUBLIC_API_URL}/api/auth/profile`, {
         headers : {
             Authorization: `Bearer ${token}`, 
             Accept : "application/json",

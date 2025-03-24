@@ -6,7 +6,7 @@ export const metadata = {
 }
 const getUser = async (id) => {
     
-    const response = await fetch (`${process.env.NEXT_PUBLIC_API_URL}/users/${id}`);
+    const response = await fetch (`${process.env.NEXT_PUBLIC_API_URL}/api/users/${id}`);
     const { data : user} = await response.json();
     return user;
 }
