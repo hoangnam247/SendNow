@@ -110,7 +110,7 @@ export default function ContactPage({ params }) {
     }
   
     fetchStatistics();
-  }, []);
+  }, [id, token]);
 
   const calculateStatistics = () => {
     const approved = Array.isArray(contacts?.data)

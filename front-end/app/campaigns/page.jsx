@@ -54,36 +54,36 @@ export default function CampaignPage() {
   };
 
   // Hàm lấy danh sách chiến dịch từ API với phân trang và tìm kiếm
-  const getLists = async (query = '', page = 1) => {
-    setLoading(true); // Bật trạng thái đang tải
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/campaigns?q=${query}&page=${page}`,
-        {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      const data = await response.json();
-
-      // Cập nhật danh sách chiến dịch và thông tin phân trang
-      setLists(data.data.data); // Cập nhật danh sách
-      setTotalPages(data.data.last_page); // Cập nhật tổng số trang
-      setCurrentPage(data.data.current_page); // Cập nhật trang hiện tại
-    } catch (error) {
-      setError('Lỗi khi tải dữ liệu');
-    } finally {
-      setLoading(false); // Tắt trạng thái đang tải sau khi gọi API xong
-    }
-  };
-
-  // Gọi API khi trang load hoặc tìm kiếm thay đổi
   useEffect(() => {
-    getLists(query, currentPage);
-  }, [query, currentPage]);
+    const getLists = async (query = '', page = 1) => {
+      setLoading(true); // Bật trạng thái đang tải
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/campaigns?q=${query}&page=${page}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const data = await response.json();
+
+        // Cập nhật danh sách chiến dịch và thông tin phân trang
+        setLists(data.data.data); // Cập nhật danh sách
+        setTotalPages(data.data.last_page); // Cập nhật tổng số trang
+        setCurrentPage(data.data.current_page); // Cập nhật trang hiện tại
+      } catch (error) {
+        setError('Lỗi khi tải dữ liệu');
+      } finally {
+        setLoading(false); // Tắt trạng thái đang tải sau khi gọi API xong
+      }
+    };
+
+    getLists(query, currentPage); // Gọi API khi trang load hoặc tìm kiếm thay đổi
+
+  }, [query, currentPage, token]);
 
   const formatDate = (dateString) => {
     return dayjs(dateString).locale('vi').format('DD-MM-YYYY, HH:mm:ss'); // Định dạng ngày tháng cho Việt Nam

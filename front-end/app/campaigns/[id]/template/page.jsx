@@ -21,36 +21,36 @@ export default function CampaignEmailTemplate() {
     image: "http://localhost:8000/images/email_template.png",
   });
   
- useEffect(() => {
+  useEffect(() => {
     if (id) {
-      fetchCampaignData();
-    }
-  }, [id,fetchCampaignData]);
-// Hàm gọi API để lấy thông tin chiến dịch
-const fetchCampaignData = async () => {
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    });
+      const fetchCampaignData = async () => {
+        try {
+          const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          });
 
-    const data = await response.json();
-    
-    if (response.ok) {
-      setCampaignData(data); // Cập nhật campaignData
-    
-    } else {
-      setError(data.message || 'Không thể tải thông tin chiến dịch');
+          const data = await response.json();
+
+          if (response.ok) {
+            setCampaignData(data); // Cập nhật campaignData
+          } else {
+            setError(data.message || 'Không thể tải thông tin chiến dịch');
+          }
+        } catch (error) {
+          setError('Có lỗi khi tải thông tin chiến dịch');
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      setLoading(true); // Set loading before fetching
+      fetchCampaignData(); // Call the API
     }
-  } catch (error) {
-    setError('Có lỗi khi tải thông tin chiến dịch');
-  } finally {
-    setLoading(false);
-  }
-};
+  }, [id, token]);
   return (
     <div className="p-6 max-w-screen-lg mx-auto">
        {/* Breadcrumb */}

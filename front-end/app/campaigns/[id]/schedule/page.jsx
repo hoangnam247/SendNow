@@ -18,14 +18,15 @@ export default function CampaignDetail() {
   const { id } = useParams();
   const  { token } = useToken();
   const router = useRouter();
-
   const [campaign, setCampaign] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [hasFetched, setHasFetched] = useState(false); // Flag để tránh gọi lại API
- 
+ //
   
-  // Fetch dữ liệu chiến dịch
+ useEffect(() => {
+  if (!id) return; // Tránh gọi API nếu `id` không tồn tại
+
   const fetchCampaign = async () => {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
@@ -50,14 +51,11 @@ export default function CampaignDetail() {
     }
   };
 
-  useEffect(() => {
-    if (id && !hasFetched) {
-      setLoading(true);
-      fetchCampaign();
-      setHasFetched(true);
-    }
-  }, [id, hasFetched, fetchCampaign]);  // Đảm bảo rằng fetchCampaign đã được đưa vào dependency array
+  setLoading(true); // Set loading trước khi bắt đầu fetch
+  fetchCampaign(); // Gọi API khi `id` có giá trị
+}, [id, token]); // Dependency array chỉ chứa `id` và `token` 
 
+  
   const [sendDate, setSendDate] = useState('');
   const [sendTime, setSendTime] = useState('');
 

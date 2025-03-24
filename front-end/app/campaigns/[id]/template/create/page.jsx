@@ -23,66 +23,80 @@ export default function EmailTemplate() {
 
 
   // Hàm gọi API để lấy thông tin chiến dịch
-  const fetchCampaignData = async () => {
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      });
+  useEffect(() => {
+    if (!id) return; // Tránh gọi API nếu `id` không tồn tại
 
-      const data = await response.json();
-      
-      if (response.ok) {
-        setCampaignData(data); // Cập nhật campaignData
-      
-      } else {
-        setError(data.message || 'Không thể tải thông tin chiến dịch');
+    const fetchCampaignData = async () => {
+      setLoading(true); // Bắt đầu loading trước khi fetch
+
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setCampaignData(data); // Cập nhật campaignData
+        } else {
+          setError(data.message || 'Không thể tải thông tin chiến dịch');
+        }
+      } catch (error) {
+        setError('Có lỗi khi tải thông tin chiến dịch');
+      } finally {
+        setLoading(false); // Kết thúc loading
       }
-    } catch (error) {
-      setError('Có lỗi khi tải thông tin chiến dịch');
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
 
+    fetchCampaignData(); // Gọi API
+
+  }, [id, token]);
   // Hàm lấy danh sách mẫu email từ API
-const fetchEmailTemplates = async (query = '', page = 1) => {
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/email-template?q=${query}&page=${page}`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    });
-
-    const result = await response.json();
-
-    // Kiểm tra nếu có dữ liệu và dữ liệu là mảng mẫu email
-    if (result.success && result.data && Array.isArray(result.data.data)) {
-      setEmailTemplates(result.data.data); // Lấy dữ liệu mẫu email từ result.data.data
-      setTotalPages(result.data.last_page); // Cập nhật tổng số trang
-      setCurrentPage(result.data.current_page); // Cập nhật trang hiện tại
-    } else {
-      console.error("Dữ liệu không hợp lệ:", result);
-    }
-  } catch (error) {
-    console.error('Lỗi khi lấy danh sách mẫu email:', error);
-  } finally {
-    setLoading(false);
-  }
-};
-
-
   useEffect(() => {
     if (showTemplates) {
-      fetchEmailTemplates();
-    }
-  }, [showTemplates,fetchCampaignData,fetchEmailTemplates]);
+      const fetchEmailTemplates = async (query = '', page = 1) => {
+        try {
+          const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/email-template?q=${query}&page=${page}`, {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          });
 
+          const result = await response.json();
+
+          if (result.success && result.data && Array.isArray(result.data.data)) {
+            setEmailTemplates(result.data.data); // Lấy dữ liệu mẫu email từ result.data.data
+            setTotalPages(result.data.last_page); // Cập nhật tổng số trang
+            setCurrentPage(result.data.current_page); // Cập nhật trang hiện tại
+          } else {
+            console.error("Dữ liệu không hợp lệ:", result);
+          }
+        } catch (error) {
+          console.error('Lỗi khi lấy danh sách mẫu email:', error);
+          setError('Lỗi khi lấy mẫu email');
+        } finally {
+          setLoading(false); // Kết thúc quá trình loading
+        }
+      };
+
+      setLoading(true); // Bắt đầu quá trình loading
+      fetchEmailTemplates(); // Gọi hàm lấy dữ liệu mẫu email
+    }
+  }, [showTemplates, currentPage, token]); // Dependency array chứa showTemplates, currentPage và token
+
+  // Gọi API khi `query` hoặc `currentPage` thay đổi
+  useEffect(() => {
+    if (query || currentPage) {
+      setLoading(true); // Bắt đầu loading khi tìm kiếm hoặc trang thay đổi
+      fetchEmailTemplates(query, currentPage); // Gọi lại API
+    }
+  }, [query, currentPage]);
   const toggleTemplates = () => {
     setShowTemplates(!showTemplates);
   };
@@ -163,15 +177,8 @@ const fetchEmailTemplates = async (query = '', page = 1) => {
     }
   };
 
-  useEffect(() => {
-    if (id) {
-      fetchCampaignData();
-    }
-  }, [id]);
-  // Gọi API khi trang load hoặc tìm kiếm thay đổi
-  useEffect(() => {
-    fetchEmailTemplates(query, currentPage);
-  }, [query, currentPage]);
+ 
+ 
 
   return (
     <div className="max-h-screen  ">

@@ -297,7 +297,7 @@ const EmailEditor = ({ templateId }) => {
 
       setEditor(editorInstance);
     }
-  }, [emailTemplate]);
+  }, [templateId,token,emailTemplate]);
 
   return (
     <div className="flex h-screen flex-col">

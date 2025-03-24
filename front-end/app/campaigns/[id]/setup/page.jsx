@@ -22,40 +22,43 @@ export default function CampaignSettings() {
   const [campaignData, setCampaignData] = useState(null); // state mới
 
   // Hàm gọi API để lấy thông tin chiến dịch
-  const fetchCampaignData = async () => {
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      });
-
-      const data = await response.json();
-      
-      if (response.ok) {
-        setCampaignData(data); // Cập nhật campaignData
-        setName(data.data.name || '');
-        setSenderName(data.data.sender_name || '');
-        setSubject(data.data.subject || '');
-        setEmailFrom(data.data.email_from || '');
-        setEmailReplyTo(data.data.email_reply_to || '');
-      } else {
-        setError(data.message || 'Không thể tải thông tin chiến dịch');
-      }
-    } catch (error) {
-      setError('Có lỗi khi tải thông tin chiến dịch');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    if (id) {
-      fetchCampaignData();
-    }
-  }, [id,fetchCampaignData]);
+    if (!id) return; // Tránh gọi API nếu `id` không tồn tại
+
+    const fetchCampaignData = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        const data = await response.json();
+        
+        if (response.ok) {
+          setCampaignData(data); // Cập nhật campaignData
+          setName(data.data.name || '');
+          setSenderName(data.data.sender_name || '');
+          setSubject(data.data.subject || '');
+          setEmailFrom(data.data.email_from || '');
+          setEmailReplyTo(data.data.email_reply_to || '');
+        } else {
+          setError(data.message || 'Không thể tải thông tin chiến dịch');
+        }
+      } catch (error) {
+        setError('Có lỗi khi tải thông tin chiến dịch');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    setLoading(true); // Set loading trước khi bắt đầu fetch
+    fetchCampaignData(); // Gọi API khi `id` có giá trị
+  }, [id, token]); // Dependency array chỉ chứa `id` và `token`
+  //
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

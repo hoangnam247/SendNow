@@ -16,58 +16,55 @@ export default function CampaignDetail() {
   const [selectedGroupId, setSelectedGroupId] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [hasFetched, setHasFetched] = useState(false); // Cờ kiểm soát để tránh gọi lại API
 
   // Hàm fetch dữ liệu (kết hợp Campaign và Groups)
-  const fetchCampaignAndGroups = async () => {
-    try {
-      const [campaignResponse, groupsResponse] = await Promise.all([
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        }),
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/lists`, {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        }),
-      ]);
-
-      const campaignData = await campaignResponse.json();
-      const groupsData = await groupsResponse.json();
-      
-      if (campaignResponse.ok) {
-        setCampaign(campaignData);
-        setSelectedGroupId(campaignData.data.contact_list_id || ''); // Gán giá trị liên kết
-      } else {
-        setError(campaignData.message || 'Không thể lấy thông tin chiến dịch');
-      }
-
-      if (groupsResponse.ok) {
-        setContactGroups(groupsData.data.data);
-      } else {
-        setError(groupsData.message || 'Không thể lấy danh sách liên hệ');
-      }
-    } catch (error) {
-      setError('Lỗi khi lấy thông tin');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Gọi API khi component mount
   useEffect(() => {
-    if (id && !hasFetched) {
-      setLoading(true);
-      fetchCampaignAndGroups();
-      setHasFetched(true); // Đảm bảo chỉ fetch 1 lần
-    }
-  }, [id, hasFetched, fetchCampaign]);  // Đảm bảo rằng fetchCampaign đã được đưa vào dependency array
+    if (!id) return; // Tránh gọi API nếu `id` không tồn tại
+
+    const fetchCampaignAndGroups = async () => {
+      try {
+        const [campaignResponse, groupsResponse] = await Promise.all([
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          }),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/lists`, {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          }),
+        ]);
+
+        const campaignData = await campaignResponse.json();
+        const groupsData = await groupsResponse.json();
+
+        if (campaignResponse.ok) {
+          setCampaign(campaignData);
+          setSelectedGroupId(campaignData.data.contact_list_id || ''); // Gán giá trị liên kết
+        } else {
+          setError(campaignData.message || 'Không thể lấy thông tin chiến dịch');
+        }
+
+        if (groupsResponse.ok) {
+          setContactGroups(groupsData.data.data);
+        } else {
+          setError(groupsData.message || 'Không thể lấy danh sách liên hệ');
+        }
+      } catch (error) {
+        setError('Lỗi khi lấy thông tin');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    setLoading(true); // Set loading trước khi bắt đầu fetch
+    fetchCampaignAndGroups(); // Gọi API khi `id` có giá trị
+  }, [id, token]); // Dependency array chỉ chứa `id` và `token`  // Đảm bảo rằng fetchCampaign đã được đưa vào dependency array
 
   // Hàm xử lý lưu và tiếp tục
   const handleSaveAndContinue = async () => {

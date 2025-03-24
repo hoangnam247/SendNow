@@ -32,7 +32,7 @@ const Carousel = () => {
       handleNext();
     }, 5000);
     return () => clearInterval(interval);
-  }, [currentSlide]);
+  }, [handleNext,currentSlide]);
 
   return (
     <div className="relative w-full overflow-hidden">

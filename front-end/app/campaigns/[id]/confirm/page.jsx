@@ -9,11 +9,12 @@ export default function Home() {
     const { id } = useParams();
     const  { token } = useToken();
     const [campaign, setCampaign] = useState(null);
-    const [hasFetched, setHasFetched] = useState(false); // Cờ kiểm soát để tránh gọi lại API
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
       
-      // Hàm fetch dữ liệu (kết hợp Campaign )
+    useEffect(() => {
+      if (!id) return; // Tránh gọi API nếu `id` không tồn tại
+  
       const fetchCampaign = async () => {
         try {
           const campaignResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/campaigns/${id}`, {
@@ -23,9 +24,9 @@ export default function Home() {
               'Content-Type': 'application/json',
             },
           });
-      
+  
           const campaignData = await campaignResponse.json();
-      
+  
           if (campaignResponse.ok) {
             setCampaign(campaignData);
             setSelectedGroupId(campaignData.data.contact_list_id || ''); // Gán giá trị liên kết
@@ -38,15 +39,12 @@ export default function Home() {
           setLoading(false);
         }
       };
-    
-      // Gọi API khi component mount
-      useEffect(() => {
-        if (id && !hasFetched) {
-          setLoading(true);
-          fetchCampaign();
-          setHasFetched(true); // Đảm bảo chỉ fetch 1 lần
-        }
-      }, [id, hasFetched, fetchCampaign]);  // Đảm bảo rằng fetchCampaign đã được đưa vào dependency array
+  
+      setLoading(true); // Set loading trước khi bắt đầu fetch
+      fetchCampaign(); // Gọi API khi `id` có giá trị
+  
+    }, [id, token]); // Dependency array chỉ chứa `id` và `token`
+      
       const currentDate = new Date();
       const scheduledDate = campaign?.data.scheduled_at ? new Date(campaign?.data.scheduled_at) : null;
 
