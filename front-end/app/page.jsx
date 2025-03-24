@@ -11,6 +11,12 @@ import {
   EnvelopeOpenIcon 
 } from '@heroicons/react/24/outline';
 export default function HomePage() {
+  const [openFAQ, setOpenFAQ] = useState({});
+
+  const handleToggle = (index) => {
+    setOpenFAQ((prev) => ({ ...prev, [index]: !prev[index] }));
+  };
+
   useScrollMagic(".scroll-item", "animate-fade-in");
 
   return (
@@ -130,28 +136,28 @@ export default function HomePage() {
         </div>
       </div>
 {/* Thêm phần câu hỏi thường gặp */}
-<div className="text-center py-16 bg-gray-50 scroll-item opacity-0 translate-y-10 ">
+  <div className="text-center py-16 bg-gray-50 scroll-item opacity-0 translate-y-10 ">
         <h2 className="text-3xl font-bold text-gray-900">CÂU HỎI THƯỜNG GẶP</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto mt-8">
-          {[  
+        {[  
             { question: "Email marketing là gì?", answer: "Email marketing là phương pháp tiếp thị sử dụng email để giao tiếp với khách hàng." },
             { question: "Tại sao email của tôi hay vào spam?", answer: "Có một số lý do hay gặp như sau:\n(1) Tỷ lệ mở email (open rate) quá thấp: Để tăng tỷ lệ mở email bạn cần đặt tiêu đề thật thu hút gửi các nội dung có hữu ích đối với người nhận.\n(2) Nội dung email có nhiều các từ khóa quảng cáo như khuyến mãi, giảm giá... dễ kích hoạt bộ lọc spam dựa trên thuật toán trí tuệ nhân tạo của Gmail. \n(3) Tần suất gửi email quá nhiều, khiến người nhận khó chịu và đánh dấu email spam. \n(4) Danh sách email không chất lượng, đã bị khai thác bởi nhiều Doanh Nghiệp. " },
             { question: "Zozo EMA có cung cấp dùng thử không?", answer: "Có, Zozo EMA có cung cấp DÙNG THỬ MIỄN PHÍ 10 ngày. Zozo để khách hàng trải nghiệm. Hiện tại EMA là nền tảng email marketing mạnh mẽ với nhiều tính năng tiện lợi. Bạn vui lòng truy cập vào: Dùng thử >> Để đăng ký trải nghiệm." },
             { question: "Zozo EMA có thống kê được ai mở mail hay không?", answer: "Zozo EMA cung cấp báo cáo đầy đủ, trực quan bằng biểu đồ về:\n(1) Danh sách những người mở email.\n(2) Danh sách người bấm vào đường link trong email.\n(3) Danh sách email bị trả lại." },
             { question: "Tỉ lệ inbox trên hệ thống email marketing của Zozo EMA có cao không?", answer: "Zozo EMA sử dụng công nghệ gửi mail hiện đại cùng các nền tảng SMTP hiện đại và được tin dùng nhiều nhất như SendGrid, Amazon... cho nên tỉ lệ vào inbox sẽ rất cao nếu thực hiện đúng." },
             { question: "Tại sao tôi phải xác minh email?", answer: "Nhằm đảm bảo quyền lợi cho người dùng cũng như tuân thủ pháp luật, Zozo EMA yêu cầu người dùng xác minh sở hữu với email dùng để gửi, tránh tình trạng mạo danh gửi email lừa đảo." }
+            // các câu hỏi khác
           ].map((faq, index) => {
-            const [open, setOpen] = useState(false);
             return (
               <div key={index} className="border-b border-gray-300 py-4 text-left">
                 <button
-                  onClick={() => setOpen(!open)}
+                  onClick={() => handleToggle(index)}  // Sử dụng function ngoài để xử lý
                   className="w-full flex justify-between items-center text-left text-gray-900 font-medium hover:text-blue-500"
                 >
                   {faq.question}
-                  {open ? <MinusIcon className="h-5 w-5" /> : <PlusIcon className="h-5 w-5" />}
+                  {openFAQ[index] ? <MinusIcon className="h-5 w-5" /> : <PlusIcon className="h-5 w-5" />}
                 </button>
-                {open && <p className="text-gray-600 mt-2 whitespace-pre-line">{faq.answer}</p>}
+                {openFAQ[index] && <p className="text-gray-600 mt-2 whitespace-pre-line">{faq.answer}</p>}
               </div>
             );
           })}
