@@ -28,7 +28,7 @@ export default function CampaignEmailTemplate() {
 // Hàm gọi API để lấy thông tin chiến dịch
 const fetchCampaignData = async () => {
   try {
-    const response = await fetch(`${process.env.SERVER_API}/campaigns/${id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,

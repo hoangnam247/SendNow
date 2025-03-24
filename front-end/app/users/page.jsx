@@ -5,7 +5,7 @@ export const  metadata = {
   title : " Danh sach nguoi dung "
 };
 const getUsers = async () => {
-  const response = await fetch (`${process.env.SERVER_API}/users`);
+  const response = await fetch (`${process.env.NEXT_PUBLIC_API_URL}/users`);
   return response.json();
 };
 export default async function UsersPage() {

@@ -24,7 +24,7 @@ export default function CampaignSettings() {
   // Hàm gọi API để lấy thông tin chiến dịch
   const fetchCampaignData = async () => {
     try {
-      const response = await fetch(`${process.env.SERVER_API}/campaigns/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -60,7 +60,7 @@ export default function CampaignSettings() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${process.env.SERVER_API}/campaigns/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token}`,

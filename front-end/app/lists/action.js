@@ -18,7 +18,7 @@ export const handleCreateContactLists = async (formData) => {
   console.log(data);
   try {
     // Make the POST request
-    const response = await fetch(`${process.env.SERVER_API}/lists`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/lists`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +42,7 @@ export const handleCreateContactLists = async (formData) => {
 };
 
 export async function fetchLists(token) {
-  const res = await fetch(`${process.env.SERVER_API}/lists`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/lists`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -58,7 +58,7 @@ export async function fetchLists(token) {
 }
 
 export async function fetchContacts(listId, token) {
-  const res = await fetch(`${process.env.SERVER_API}/lists/${listId}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/lists/${listId}`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,

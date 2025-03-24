@@ -11,7 +11,7 @@ import presetNewsletter from 'grapesjs-preset-newsletter';
 
 // Hàm lấy dữ liệu template email từ API
 const getEmailTemplate = async (id, token) => {
-  const response = await fetch(`${process.env.SERVER_API}/campaigns/${id}/email-template`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}/email-template`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`, // Gửi token để xác thực
@@ -32,7 +32,7 @@ const getEmailTemplate = async (id, token) => {
 
 // Hàm lưu template email về cơ sở dữ liệu
 const saveEmailTemplate = async (id, token, content ,css_content,json_content) => {
-  const response = await fetch(`${process.env.SERVER_API}/campaigns/${id}`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}`, {
     method: 'PUT',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -144,7 +144,7 @@ const EmailEditor = ({ templateId }) => {
         
 
         try {
-          const response = await fetch(`${process.env.SERVER_API}/upload-image`, {
+          const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/upload-image`, {
             method: 'POST',
             headers: {
               Authorization: `Bearer ${token}`, // Gửi token để xác thực

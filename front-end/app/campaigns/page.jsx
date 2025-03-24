@@ -22,7 +22,7 @@ export default function CampaignPage() {
   // Hàm để tạo chiến dịch với giá trị mặc định
   const createCampaign = async () => {
     try {
-      const response = await fetch(`${process.env.SERVER_API}/campaigns`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`, // Token cần thiết để xác thực
@@ -58,7 +58,7 @@ export default function CampaignPage() {
     setLoading(true); // Bật trạng thái đang tải
     try {
       const response = await fetch(
-        `${process.env.SERVER_API}/campaigns?q=${query}&page=${page}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/campaigns?q=${query}&page=${page}`,
         {
           method: 'GET',
           headers: {

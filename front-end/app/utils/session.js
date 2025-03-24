@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 export const setSession = async (token, user) => {
-    await fetch (`${process.env.APP_URL}/api/session`,{
+    await fetch (`${process.env.NEXT_PUBLIC_APP_URL}/api/session`,{
         method : "POST",  
         headers  : {
             "Content-Type" : "application/json",
@@ -21,7 +21,7 @@ export const getSession = async () => {
         return false; // Nếu không có token, trả về false
     }
 
-    const response = await fetch(`${process.env.APP_URL}/api/session`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/session`, {
         headers: {
             token: token,
         },

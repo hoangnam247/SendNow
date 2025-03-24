@@ -16,7 +16,7 @@ export default function Home() {
       // Hàm fetch dữ liệu (kết hợp Campaign )
       const fetchCampaign = async () => {
         try {
-          const campaignResponse = await fetch(`${process.env.SERVER_API}/campaigns/${id}`, {
+          const campaignResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${token}`,

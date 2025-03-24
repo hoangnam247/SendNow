@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 
 // Hàm lấy dữ liệu email từ API
 const getEmail = async (id) => {
-  const response = await fetch(`${process.env.SERVER_API}/email-template/${id}`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/email-template/${id}`);
   if (!response.ok) {
     throw new Error(`Lỗi khi gọi API: ${response.statusText}`);
   }

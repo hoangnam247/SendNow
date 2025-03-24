@@ -12,7 +12,7 @@ export default function UserList({ users }) {
         setError(null); // Reset lỗi trước đó (nếu có)
         
         try {
-            const response = await fetch(`${process.env.SERVER_API}/users?q=${q}`);
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users?q=${q}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch users');
             }
@@ -34,7 +34,7 @@ export default function UserList({ users }) {
 
     const removeUser = async (id) => {
         try {
-            const response = await fetch(`${process.env.SERVER_API}/users/${id}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/${id}`, {
                 method: "DELETE",
             });
             if (!response.ok) {

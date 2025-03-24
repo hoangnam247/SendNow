@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     env: {
-        SERVER_API: process.env.SERVER_API,
-        APP_URL : process.env.APP_URL,
+        NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+        NEXT_PUBLIC_APP_URL : process.env.NEXT_PUBLIC_APP_URL,
     }
     
 };

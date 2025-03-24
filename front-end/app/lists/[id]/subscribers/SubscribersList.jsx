@@ -42,7 +42,7 @@ export default function SubscribersList({ contacts, loading, setContacts }) {
   // Hàm xóa liên hệ
   const removeContact = async (id) => {
     try {
-      const response = await fetch(`${process.env.SERVER_API}/contacts/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacts/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -68,7 +68,7 @@ export default function SubscribersList({ contacts, loading, setContacts }) {
   // Hàm cập nhật trạng thái liên hệ
   const updateContactStatus = async (id, status) => {
     try {
-      const response = await fetch(`${process.env.SERVER_API}/contacts/${id}/status`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacts/${id}/status`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
