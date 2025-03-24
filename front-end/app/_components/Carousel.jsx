@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import Image from 'next/image';
 
 const Carousel = () => {
   const slides = [
@@ -44,7 +45,7 @@ const Carousel = () => {
       >
         {slides.map((slide) => (
           <div key={slide.id} className="flex-shrink-0 w-full">
-            <img
+            <Image
               src={slide.image}
               alt={slide.alt}
               className="w-full aspect-[14/7] sm:aspect-[3/2] md:aspect-[14/8] lg:aspect-[20/9] object-cover"

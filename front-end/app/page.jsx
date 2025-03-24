@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "./_components/Carousel";
 import  useScrollMagic  from "./_components/useScrollMagic";
+import Image from 'next/image';
 
 import {Tooltip} from "@nextui-org/tooltip";
 import {
@@ -40,7 +41,7 @@ export default function HomePage() {
           ].map((client, index) => (
             <Tooltip key={index} content={client.name} className="relative group">
               <div className="w-36 h-36 rounded-full border-2 border-gray-300 overflow-hidden hover:scale-110 transition-transform duration-300">
-                <img src={client.src} alt={client.name} className="w-full h-full object-contain" />
+                <Image src={client.src} alt={client.name} className="w-full h-full object-contain" />
               </div>
             </Tooltip>
           ))}

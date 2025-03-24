@@ -6,6 +6,7 @@ import { useParams } from 'next/navigation';
 import NavigationBar from '@/app/_components/NavigationBar';
 import { useToken } from '@/app/contexts/TokenContext';
 import Skeleton from 'react-loading-skeleton';
+import Image from 'next/image';
 
 export default function CampaignEmailTemplate() {
   const { id } = useParams();
@@ -106,7 +107,7 @@ const fetchCampaignData = async () => {
 
           {/* Template Image */}
           <div className="w-1/3 ml-8">
-            <img
+            <Image
               src={selectedTemplate.image}
               alt={selectedTemplate.name}
               className="rounded-lg shadow-md"

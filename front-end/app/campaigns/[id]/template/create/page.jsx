@@ -6,6 +6,7 @@ import { useParams ,useRouter} from 'next/navigation';
 import 'react-loading-skeleton/dist/skeleton.css'; // Import CSS
 import NavigationBar from '@/app/_components/NavigationBar';
 import Skeleton from 'react-loading-skeleton';
+import Image from 'next/image';
 
 export default function EmailTemplate() {
 
@@ -255,7 +256,7 @@ const fetchEmailTemplates = async (query = '', page = 1) => {
             className="bg-gray-100 p-2 rounded-lg shadow-md hover:bg-gray-200 transition-colors cursor-pointer"
             onClick={() => handleSubmit(template.id)} // Lưu mẫu khi nhấp vào
           >
-            <img
+            <Image 
               src={`http://localhost:8000/images/${template.image}`}  // Đảm bảo đường dẫn đúng
               alt={template.name}
               className="w-full h-auto object-contain rounded-md"  // Cải thiện để ảnh không bị cắt
