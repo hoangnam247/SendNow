@@ -26,7 +26,6 @@ import {
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import Image from "next/image";
 import { useToken } from '@/app/contexts/TokenContext';
-import Image from 'next/image';
 
 const products = [
   { name: 'Tổng quan', description: 'Khám phá các chỉ số và dữ liệu quan trọng để hiểu khách hàng của doanh nghiệp.', href: '/audience/overview', icon: ChartBarIcon },
