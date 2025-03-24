@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:3000'],  // Chỉ định domain frontend của bạn
+    'allowed_origins' => ['https://getnow.io.vn'],  // Chỉ định domain frontend của bạn
 
     'allowed_origins_patterns' => [],
 
