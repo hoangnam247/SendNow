@@ -55,7 +55,7 @@ export default function CampaignSettings() {
     if (id) {
       fetchCampaignData();
     }
-  }, [id]);
+  }, [id,fetchCampaignData]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

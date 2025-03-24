@@ -56,7 +56,7 @@ export default function CampaignDetail() {
       fetchCampaign();
       setHasFetched(true);
     }
-  }, [id, hasFetched]);
+  }, [id, hasFetched, fetchCampaign]);  // Đảm bảo rằng fetchCampaign đã được đưa vào dependency array
 
   const [sendDate, setSendDate] = useState('');
   const [sendTime, setSendTime] = useState('');

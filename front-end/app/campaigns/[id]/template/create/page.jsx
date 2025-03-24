@@ -80,7 +80,7 @@ const fetchEmailTemplates = async (query = '', page = 1) => {
     if (showTemplates) {
       fetchEmailTemplates();
     }
-  }, [showTemplates]);
+  }, [showTemplates,fetchCampaignData,fetchEmailTemplates]);
 
   const toggleTemplates = () => {
     setShowTemplates(!showTemplates);

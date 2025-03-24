@@ -46,7 +46,7 @@ export default function Home() {
           fetchCampaign();
           setHasFetched(true); // Đảm bảo chỉ fetch 1 lần
         }
-      }, [id, hasFetched]);
+      }, [id, hasFetched, fetchCampaign]);  // Đảm bảo rằng fetchCampaign đã được đưa vào dependency array
       const currentDate = new Date();
       const scheduledDate = campaign?.data.scheduled_at ? new Date(campaign?.data.scheduled_at) : null;
 

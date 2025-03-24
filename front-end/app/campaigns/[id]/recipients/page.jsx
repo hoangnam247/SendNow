@@ -67,7 +67,7 @@ export default function CampaignDetail() {
       fetchCampaignAndGroups();
       setHasFetched(true); // Đảm bảo chỉ fetch 1 lần
     }
-  }, [id, hasFetched]);
+  }, [id, hasFetched, fetchCampaign]);  // Đảm bảo rằng fetchCampaign đã được đưa vào dependency array
 
   // Hàm xử lý lưu và tiếp tục
   const handleSaveAndContinue = async () => {

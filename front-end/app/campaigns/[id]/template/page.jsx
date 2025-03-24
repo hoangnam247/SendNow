@@ -24,7 +24,7 @@ export default function CampaignEmailTemplate() {
     if (id) {
       fetchCampaignData();
     }
-  }, [id]);
+  }, [id,fetchCampaignData]);
 // Hàm gọi API để lấy thông tin chiến dịch
 const fetchCampaignData = async () => {
   try {
