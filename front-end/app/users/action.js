@@ -7,6 +7,8 @@ export const handleCreateUser = async (formData) => {
             "Content-Type" : "application/json",
             'Accept' : "application/json",
         },
+        credentials: 'include',
+
         body: JSON.stringify(data),
     });
     const responseBody  = await response.json();
@@ -26,6 +28,9 @@ export const handleUpdateUser = async (formData) => {
             "Content-Type" : "application/json",
             'Accept' : "application/json",
         },
+        
+        credentials: 'include',
+
         body: JSON.stringify(data),
     });
     const responseBody  = await response.json();

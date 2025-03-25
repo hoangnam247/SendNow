@@ -25,6 +25,8 @@ export const handleCreateContactLists = async (formData) => {
         Accept: "application/json",
         Authorization: `Bearer ${token}`, // Include the token in the request
       },
+      credentials: 'include',
+
       body: JSON.stringify(data),
     });
 
@@ -48,6 +50,8 @@ export async function fetchLists(token) {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
+
   });
 
   const data = await res.json();
@@ -64,6 +68,8 @@ export async function fetchContacts(listId, token) {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
+
   });
 
   const data = await res.json();

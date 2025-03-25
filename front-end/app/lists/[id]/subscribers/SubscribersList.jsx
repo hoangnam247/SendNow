@@ -48,6 +48,8 @@ export default function SubscribersList({ contacts, loading, setContacts }) {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
+        credentials: 'include',
+
       });
 
       if (!response.ok) {
@@ -74,6 +76,8 @@ export default function SubscribersList({ contacts, loading, setContacts }) {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
+        credentials: 'include',
+
         body: JSON.stringify({ status }),
       });
 

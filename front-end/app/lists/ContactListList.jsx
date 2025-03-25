@@ -85,6 +85,8 @@ const ContactListsList = ({ lists, total, current, pageSize, query }) => {
               Authorization: `Bearer ${token}`,
               'Content-Type': 'application/json',
             },
+            credentials: 'include',
+
         });
         if (!response.ok) {
             throw new Error('Failed to delete contactlist');

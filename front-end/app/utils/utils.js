@@ -15,6 +15,8 @@ export const getProfile = async (token) => {
             Authorization: `Bearer ${token}`, 
             Accept : "application/json",
         },
+        credentials: 'include',
+
     });
     if(!response.ok){
         return false;

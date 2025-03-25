@@ -156,7 +156,7 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN'),
+    'domain' => env('SESSION_DOMAIN', 'getnow.io.vn'), // Cố định domain
 
     /*
     |--------------------------------------------------------------------------
@@ -169,7 +169,7 @@ return [
     |
     */
 
-    'secure' => env('SESSION_SECURE_COOKIE'),
+    'secure' => env('SESSION_SECURE_COOKIE', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -182,7 +182,7 @@ return [
     |
     */
 
-    'http_only' => env('SESSION_HTTP_ONLY', true),
+    'http_only' => true,
 
     /*
     |--------------------------------------------------------------------------

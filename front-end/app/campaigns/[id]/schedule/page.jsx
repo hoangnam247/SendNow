@@ -35,6 +35,8 @@ export default function CampaignDetail() {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
+
       });
 
       const campaignData = await response.json();
@@ -84,6 +86,8 @@ export default function CampaignDetail() {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
+
         body: JSON.stringify({
           scheduled_at: scheduledAt,
         }),

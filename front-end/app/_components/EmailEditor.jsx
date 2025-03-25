@@ -17,6 +17,7 @@ const getEmailTemplate = async (id, token) => {
       Authorization: `Bearer ${token}`, // Gửi token để xác thực
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
   });
 
   if (!response.ok) {
@@ -38,6 +39,7 @@ const saveEmailTemplate = async (id, token, content ,css_content,json_content) =
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
     body: JSON.stringify({
       content: content, // Lưu nội dung vào cột content
       css_content: css_content,
@@ -149,6 +151,7 @@ const EmailEditor = ({ templateId }) => {
             headers: {
               Authorization: `Bearer ${token}`, // Gửi token để xác thực
             },
+            credentials: 'include',
             body: formData,
             });
     

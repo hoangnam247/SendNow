@@ -28,6 +28,7 @@ export default function CampaignPage() {
           Authorization: `Bearer ${token}`, // Token cần thiết để xác thực
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           name: 'Chiến dịch chưa được đặt tên', // Giá trị mặc định cho name
         }),
@@ -66,6 +67,7 @@ export default function CampaignPage() {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${token}`,
             },
+            credentials: 'include',
           }
         );
         const data = await response.json();

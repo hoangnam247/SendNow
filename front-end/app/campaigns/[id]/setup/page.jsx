@@ -33,6 +33,8 @@ export default function CampaignSettings() {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
+          credentials: 'include',
+
         });
   
         const data = await response.json();
@@ -69,6 +71,8 @@ export default function CampaignSettings() {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
+
         body: JSON.stringify({
           name,
           sender_name: senderName,

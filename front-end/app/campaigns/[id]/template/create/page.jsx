@@ -36,6 +36,8 @@ export default function EmailTemplate() {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
+          credentials: 'include',
+
         });
 
         const data = await response.json();
@@ -66,6 +68,8 @@ export default function EmailTemplate() {
               Authorization: `Bearer ${token}`,
               'Content-Type': 'application/json',
             },
+            credentials: 'include',
+
           });
 
           const result = await response.json();
@@ -111,6 +115,8 @@ export default function EmailTemplate() {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
+
       });
   
       const campaignData = await responseCampaign.json();
@@ -125,6 +131,8 @@ export default function EmailTemplate() {
               Authorization: `Bearer ${token}`,
               'Content-Type': 'application/json',
             },
+            credentials: 'include',
+
             body: JSON.stringify({
               email_template_id: templateId,
               content: '', // Đặt content là rỗng
@@ -150,6 +158,8 @@ export default function EmailTemplate() {
               Authorization: `Bearer ${token}`,
               'Content-Type': 'application/json',
             },
+            credentials: 'include',
+
             body: JSON.stringify({
               email_template_id: templateId,
             }),

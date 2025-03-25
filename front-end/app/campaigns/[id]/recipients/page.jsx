@@ -30,6 +30,8 @@ export default function CampaignDetail() {
               Authorization: `Bearer ${token}`,
               'Content-Type': 'application/json',
             },
+            credentials: 'include',
+
           }),
           fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/lists`, {
             method: 'GET',
@@ -37,6 +39,8 @@ export default function CampaignDetail() {
               Authorization: `Bearer ${token}`,
               'Content-Type': 'application/json',
             },
+            credentials: 'include',
+
           }),
         ]);
 
@@ -75,6 +79,8 @@ export default function CampaignDetail() {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
+
         body: JSON.stringify({
           contact_list_id: selectedGroupId, // Lưu group đã chọn
         }),

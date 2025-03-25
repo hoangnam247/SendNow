@@ -23,6 +23,8 @@ export default function Home() {
               Authorization: `Bearer ${token}`,
               'Content-Type': 'application/json',
             },
+            credentials: 'include',
+
           });
   
           const campaignData = await campaignResponse.json();
