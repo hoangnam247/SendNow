@@ -35,7 +35,6 @@ export default function CampaignPage() {
       });
 
       const data = await response.json();
-      console.log('API response data:', data);
 
       if (response.ok) {
         setSuccessMessage('Chiến dịch đã được tạo thành công!');

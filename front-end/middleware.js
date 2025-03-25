@@ -11,12 +11,12 @@ export const middleware = async (request) => {
         const { success, user = "" } = await getProfile(token);
     
         // Kiểm tra quyền truy cập vào /users và /lists
-        if (!success && (pathname.startsWith("/users") || pathname.startsWith("/lists"))) {
+        if (!success && (pathname.startsWith("/campaigns") || pathname.startsWith("/lists"))) {
             return NextResponse.redirect(new URL("/auth/login", request.url));
         }
     
         setSession(token, user);
-    } else if (pathname.startsWith("/users") || pathname.startsWith("/lists")) {
+    } else if (pathname.startsWith("/campaigns") || pathname.startsWith("/lists")) {
         // Nếu không có token và đang truy cập vào /users hoặc /lists
         return NextResponse.redirect(new URL("/auth/login", request.url));
     }
