@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import Image from 'next/image';
 
@@ -19,20 +19,20 @@ const Carousel = () => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
+  }, [slides.length]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
+  }, [slides.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
     }, 5000);
     return () => clearInterval(interval);
-  }, [handleNext,currentSlide]);
+  }, [handleNext]);
 
   return (
     <div className="relative w-full overflow-hidden">
@@ -48,7 +48,7 @@ const Carousel = () => {
             <Image
               src={slide.image}
               alt={slide.alt}
-              width={800}  // Set the width of the image
+              width={800}
               height={400} 
               className="w-full aspect-[14/7] sm:aspect-[3/2] md:aspect-[14/8] lg:aspect-[20/9] object-cover"
             />
