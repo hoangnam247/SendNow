@@ -11,21 +11,19 @@ export const metadata = {
 };
 
 export default async function ClientLayout({ children }) {
-  const token = localStorage.getItem('token');
-  const userData = JSON.parse(localStorage.getItem('user'));
+
 
 
   return (
     <html lang="en">
       <body>
-        <TokenProvider token={token} user={userData}> {/* Bọc toàn bộ ứng dụng bằng TokenProvider */}
+        {/* <TokenProvider token={token} user={userData}>  */}
           <Header /> 
           <main>
             {children} {/* Các trang sẽ nằm trong TokenProvider và có thể truy cập token */}
           </main>
           <Footer />
-        </TokenProvider>
-
+        {/* </TokenProvider> */}
       </body>
     </html>
   );
