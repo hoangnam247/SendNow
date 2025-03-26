@@ -11,7 +11,6 @@ export const handleLogin = async (formData) => {
             "Content-Type" : "application/json",
             'Accept' : "application/json",
         },
-        credentials: 'include',
 
         body: JSON.stringify(form),
     });
