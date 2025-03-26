@@ -25,21 +25,16 @@ export const handleLogin = async (formData) => {
   
       // 3. Nhận token
       const { access_token, refresh_token, expires_in } = await response.json();
-      
-      // 4. Validate JWT cơ bản
-      try {
-        const decoded = jwt.decode(access_token);
-        if (!decoded?.exp) throw new Error("Token thiếu expiry");
-      } catch (e) {
-        return { success: false, message: "Token không hợp lệ" };
-      }
+    
   
       // 5. Lưu cookies
       const cookieOptions = {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         path: "/",
-        sameSite: 'lax'
+        sameSite: 'lax',
+        secure: true // BẮT BUỘC khi dùng HTTPS
+
       };
   
       cookies().set("token", access_token, {
