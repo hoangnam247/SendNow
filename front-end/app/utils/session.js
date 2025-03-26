@@ -1,13 +1,4 @@
-// // lib/session.js
-// export const setSession = (token, user) => {
-//     if (typeof window !== 'undefined') {
-//       localStorage.setItem('jwt_token', token);
-//       localStorage.setItem('user', JSON.stringify(user));
-//       // Hoặc dùng cookies (nếu cần HTTP-only)
-//     }
-//   };
-  
-// utils/auth.js
+"use server";
 export async function fetchUserProfile(token) {
   if (!token) return null;
 

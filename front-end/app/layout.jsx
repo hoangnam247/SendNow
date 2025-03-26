@@ -13,9 +13,9 @@ export const metadata = {
 
 export default async function ClientLayout({ children }) {
   const cookieStore = cookies();
-  const token = cookieStore.get('sessionToken')?.value;
+  const token = cookieStore.get('access_token')?.value;
 
-  const userData = await fetchUserProfile();
+  const userData = await fetchUserProfile(token);
 
 
   return (

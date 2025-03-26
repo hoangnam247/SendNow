@@ -4,7 +4,6 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export const handleLogin = async (formData) => {
-    try {
       const form = Object.fromEntries(formData);
       
       // 1. Gọi API đăng nhập
@@ -56,13 +55,5 @@ export const handleLogin = async (formData) => {
   
       // 6. Redirect
       redirect("/");
-      return { success: true };
-  
-    } catch (error) {
-      console.error("Login error:", error);
-      return {
-        success: false,
-        message: "Lỗi hệ thống"
-      };
-    }
+
   };
