@@ -18,10 +18,11 @@ export const handleLogin = async (formData) => {
         const errorData = await response.json();
         return { success: false, message: errorData.message || "Tài khoản hoặc mật khẩu sai"  };
     }
-    const { success, access_token , expires_in} = await response.json();
-    if(!success){
-        return { success: false, message: message || "Tài khoản hoặc mật khẩu sai" }; // Sử dụng message từ server hoặc thông báo mặc định
-    }
+    const {  access_token , expires_in} = await response.json();
+
+    // if(!success){
+    //     return { success: false, message: message || "Tài khoản hoặc mật khẩu sai" }; // Sử dụng message từ server hoặc thông báo mặc định
+    // }
     console.log(access_token)
     // Gọi Next.js API để set cookies
     try {
