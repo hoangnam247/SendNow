@@ -41,7 +41,7 @@ export const handleLogin = async (formData) => {
 
       };
   
-      cookies().set("token", access_token, {
+      cookies().set("access_token", access_token, {
         ...cookieOptions,
         expires: new Date(Date.now() + expires_in * 1000),
       });
