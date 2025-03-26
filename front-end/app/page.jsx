@@ -41,7 +41,8 @@ export default function HomePage() {
           ].map((client, index) => (
             <Tooltip key={index} content={client.name} className="relative group">
               <div className="w-36 h-36 rounded-full border-2 border-gray-300 overflow-hidden hover:scale-110 transition-transform duration-300">
-                <Image src={client.src} alt={client.name} className="w-full h-full object-contain" />
+                <Image src={client.src} alt={client.name}   width={800}  // Set the width of the image
+  height={400} className="w-full h-full object-contain" />
               </div>
             </Tooltip>
           ))}

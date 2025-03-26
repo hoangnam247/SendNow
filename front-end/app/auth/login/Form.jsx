@@ -12,14 +12,14 @@ export default function Form() {
       action={async (formData) => {
         const response = await handleLogin(formData);
 
-        // Kiểm tra phản hồi và cập nhật thông báo
-        if (response.success) {
-          setMessage(response.message); // Hiển thị thông báo thành công
-          setError(""); // Xóa thông báo lỗi
-        } else {
-          setError(response.message); // Hiển thị thông báo lỗi
-          setMessage(""); // Xóa thông báo thành công
-        }
+        // // Kiểm tra phản hồi và cập nhật thông báo
+        // if (response.success) {
+        //   setMessage(response.message); // Hiển thị thông báo thành công
+        //   setError(""); // Xóa thông báo lỗi
+        // } else {
+        //   setError(response.message); // Hiển thị thông báo lỗi
+        //   setMessage(""); // Xóa thông báo thành công
+        // }
       }}
     >
       <div className="mb-4">

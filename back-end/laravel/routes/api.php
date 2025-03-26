@@ -14,26 +14,20 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
-Route::post('/auth/login', [AuthController::class, 'login']);
-Route::middleware('auth:sanctum')->get('/auth/profile', [AuthController::class, 'profile']);
-
-Route::apiResource('pricing-plans', PricingPlanController::class);
-
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:api')->group(function () {
     Route::apiResource('email-template', EmailTemplateController::class);
 });
 
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:api')->group(function () {
     Route::apiResource('lists', ContactListsController::class);
 });
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:api')->group(function () {
     Route::apiResource('campaigns', CampaignsController::class);
 });
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:api')->group(function () {
     Route::apiResource('contacts', ContactController ::class);
     Route::put('/contacts/{id}/status', [ContactController::class, 'updateStatus']);
     Route::get('/contact/{id}/statistics', [ContactController::class, 'getMonthlyStatistics']);
@@ -41,13 +35,27 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:api')->group(function () {
     Route::get('/campaigns/{campaign}/email-template', [CampaignsController::class, 'showWithEmailTemplate']);
 });
 
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:api')->group(function () {
     Route::post('/send-campaign-email', [CampaignEmailController::class, 'sendCampaignEmail']);
     Route::post('/upload-image', [CampaignEmailController::class, 'uploadImage']);
 });
 
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+    Route::apiResource('lists', ContactListsController::class);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/profile', [AuthController::class, 'profile']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
+//
+
+});

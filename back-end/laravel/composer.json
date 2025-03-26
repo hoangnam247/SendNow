@@ -15,7 +15,8 @@
         "neverbounce/neverbounce-php": "^4.5",
         "resend/resend-laravel": "^0.15.0",
         "resend/resend-php": "^0.14.0",
-        "tijsverkoyen/css-to-inline-styles": "^2.3"
+        "tijsverkoyen/css-to-inline-styles": "^2.3",
+        "tymon/jwt-auth": "^2.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

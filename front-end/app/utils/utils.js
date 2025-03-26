@@ -22,5 +22,4 @@ export const getProfile = async (token) => {
         return false;
     }
     return response.json();
-    
 };

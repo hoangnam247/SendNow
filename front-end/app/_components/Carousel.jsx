@@ -48,6 +48,8 @@ const Carousel = () => {
             <Image
               src={slide.image}
               alt={slide.alt}
+              width={800}  // Set the width of the image
+              height={400} 
               className="w-full aspect-[14/7] sm:aspect-[3/2] md:aspect-[14/8] lg:aspect-[20/9] object-cover"
             />
           </div>

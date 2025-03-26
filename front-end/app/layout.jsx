@@ -11,16 +11,14 @@ export const metadata = {
 };
 
 export default async function ClientLayout({ children }) {
-  const session = await getSession(); // Lấy session từ server-side
-  const user = session?.user || null;
-  const token = session?.token || null;
+  const token = localStorage.getItem('token');
+  const userData = JSON.parse(localStorage.getItem('user'));
 
- 
 
   return (
     <html lang="en">
       <body>
-        <TokenProvider token={token} user={user}> {/* Bọc toàn bộ ứng dụng bằng TokenProvider */}
+        <TokenProvider token={token} user={userData}> {/* Bọc toàn bộ ứng dụng bằng TokenProvider */}
           <Header /> 
           <main>
             {children} {/* Các trang sẽ nằm trong TokenProvider và có thể truy cập token */}

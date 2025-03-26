@@ -1,51 +1,30 @@
-const fs = require("fs");
-import { NextResponse } from "next/server";
-export async function POST(request){
-    const {token,user} = await request.json();
-    if(token){
-        const name = token.split('|').slice(-1).join("");
-        const path = process.cwd() + "/session/" + name;
-        fs.writeFileSync(path, JSON.stringify(user));
+export async function POST(request) {
+  const body = await request.json();
+  const sessionToken = body.access_token;
+  const expiresAt = body.expiresAt;
+
+  // Kiểm tra sessionToken và expiresAt có hợp lệ không
+  if (!sessionToken) {
+    return Response.json(
+      { message: 'Không nhận được session token' },
+      { status: 400 }
+    );
+  }
+
+  if (!expiresAt || isNaN(new Date(expiresAt).getTime())) {
+    return Response.json(
+      { message: 'Ngày hết hạn không hợp lệ' },
+      { status: 400 }
+    );
+  }
+
+  // Chuyển đổi expiresAt thành định dạng UTC
+  const expiresDate = new Date(expiresAt).toUTCString();
+
+  return Response.json(body, {
+    status: 200,
+    headers: {
+      'Set-Cookie': `sessionToken=${sessionToken}; Path=/; HttpOnly; Expires=${expiresDate}; SameSite=Lax; Secure`
     }
-   
-    return NextResponse.json({
-        success: true,
-    });
+  });
 }
-
-export async function GET(request) {
-    // Thiết lập giá trị mặc định cho token
-    const token = request.headers.get("token") || "default_token_value"; // Giá trị mặc định nếu không có token
-
-    // Chỉ xử lý nếu token không phải là giá trị mặc định
-    if (token !== "default_token_value") {
-        const name = token.split('|').slice(-1).join("");
-        const path = process.cwd() + "/session/" + name;
-
-        try {
-            // Kiểm tra nếu file tồn tại trước khi cố gắng đọc
-            if (fs.existsSync(path)) {
-                const user = JSON.parse(fs.readFileSync(path));
-                return NextResponse.json({
-                    user,
-                });
-            } else {
-                return NextResponse.json({
-                    user: null,
-                    error: "Session file not found."
-                });
-            }
-        } catch (error) {
-            return NextResponse.json({
-                user: null,
-                error: error.message // Trả về lỗi nếu có
-            });
-        }
-    }
-
-    // Nếu không có token, trả về user null
-    return NextResponse.json({
-        user: null,
-    });
-}
-
