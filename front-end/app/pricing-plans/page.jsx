@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/price_style.css';
 import PricingCards from './PricingCards';
-import { useToken } from '../contexts/TokenContext';
+import { cookies } from 'next/headers';
 
 const getPrice = async (token) => {
   try {
@@ -33,8 +33,9 @@ const getPrice = async (token) => {
 };
 
 const PricePage = async () => {
-  const  { token } = useToken();
-  const { data: lists } = await getPrice(token);
+  const cookieStore = cookies();
+  const token = cookieStore.get('access_token')?.value;
+    const { data: lists } = await getPrice(token);
  
   return (
     <div className="container">
