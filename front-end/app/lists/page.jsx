@@ -44,7 +44,7 @@ const ListsPage = async ({ searchParams }) => {
   const query = searchParams.query || "";
 
   const { success, data: lists, total } = await getLists(
-    token.value,
+    token,
     current,
     pageSize,
     query

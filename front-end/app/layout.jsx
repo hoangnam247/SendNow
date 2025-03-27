@@ -8,7 +8,7 @@ import { TokenProvider } from "./contexts/TokenContext";
 import { cookies } from 'next/headers';
 
 export const metadata = {
-    title : "ZoZo",
+    title : "GetNow",
 };
 
 export default async function ClientLayout({ children }) {

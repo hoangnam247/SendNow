@@ -56,6 +56,8 @@ Route::group([
     Route::get('/profile', [AuthController::class, 'profile']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
+    Route::post('/verify-token', [AuthController::class, 'verifytoken']);
+
 //
 
 });

@@ -53,6 +53,16 @@ class AuthController extends Controller
         }
     }
 
+    public function verifytoken(){
+        $token = request()->token;
+        try {
+            JWTAuth::setToken($token)->getPayload();
+            return response()->json(['valid' => true]);
+        } catch (\Exception $e) {
+            return response()->json(['valid' => false], 401);
+        }
+
+    }
     public function refresh()
     {
         $refreshToken = request()->refresh_token;
@@ -63,7 +73,7 @@ class AuthController extends Controller
                 return response()->json(['error' => 'Refresh token not provided'], 400);
             }
 
-            $decoded = JWTAuth::getJWTProvider()->decode($refreshToken);
+            $decoded = JWTAuth::setToken($refreshToken)->getPayload();
             
             // Kiểm tra thời gian hết hạn
             if (isset($decoded['exp']) && $decoded['exp'] < time()) {

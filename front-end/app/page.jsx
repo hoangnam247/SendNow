@@ -28,26 +28,32 @@ export default function HomePage() {
       <div className="text-center py-16 scroll-item opacity-0 translate-y-10 ">
         <h2 className="text-3xl font-bold text-gray-900">KHÁCH HÀNG</h2>
         <p className="text-gray-600 max-w-2xl mx-auto mt-2">
-          Các thương hiệu hàng đầu đang sử dụng Zozo EMA là một kênh truyền thông đắc lực cho việc chăm sóc khách hàng, tăng hiệu quả truyền thông qua Email Marketing.
-        </p>
-        <div className="flex justify-center gap-8 mt-8 ">
-          {[
-            { src: "/images/bk.png", name: "ĐH Bách Khoa" },
-            { src: "/images/kt.png", name: "Khơ Thị" },
-            { src: "/images/tv.png", name: "TV HUB" },
-            { src: "/images/ph.png", name: "Pizza Hut" },
-            { src: "/images/iig.png", name: "IIG Việt Nam" },
-            { src: "/images/bv.png", name: "BAOVIET Life" },
-          ].map((client, index) => (
-            <Tooltip key={index} content={client.name} className="relative group">
-              <div className="w-36 h-36 rounded-full border-2 border-gray-300 overflow-hidden hover:scale-110 transition-transform duration-300">
-                <Image src={client.src} alt={client.name}   width={800}  // Set the width of the image
-  height={400} className="w-full h-full object-contain" />
-              </div>
-            </Tooltip>
-          ))}
-        </div>
-      </div>
+          Các thương hiệu hàng đầu đang sử dụng Getnow EMA là một kênh truyền thông đắc lực cho việc chăm sóc khách hàng, tăng hiệu quả truyền thông qua Email Marketing.
+       </p>
+    <div className="flex flex-wrap justify-center gap-8 mt-8">
+      {[
+        { src: "/images/bk.png", name: "ĐH Bách Khoa" },
+        { src: "/images/kt.png", name: "Khơ Thị" },
+        { src: "/images/tv.png", name: "TV HUB" },
+        { src: "/images/ph.png", name: "Pizza Hut" },
+        { src: "/images/iig.png", name: "IIG Việt Nam" },
+        { src: "/images/bv.png", name: "BAOVIET Life" },
+      ].map((client, index) => (
+        <Tooltip key={index} content={client.name} className="relative group">
+          <div className="w-36 h-36 rounded-full border-2 border-gray-300 overflow-hidden hover:scale-110 transition-transform duration-300">
+            <Image
+              src={client.src}
+              alt={client.name}
+              width={800}
+              height={400}
+              className="w-full h-full object-contain"
+            />
+          </div>
+        </Tooltip>
+      ))}
+    </div>
+  </div>
+
 
     {/* Thêm phần tính năng nổi bật */}
     <div className="text-center py-16 bg-gray-50 scroll-item opacity-0 translate-y-10 ">
@@ -58,10 +64,10 @@ export default function HomePage() {
         <div className="flex justify-center flex-wrap gap-8 mt-8 px-6 md:px-0 max-w-6xl mx-auto">
           {[
             { icon: "📊", title: "Quản trị trực quan", desc: "Giao diện trực quan, dễ sử dụng với đa ngôn ngữ, không cầu kỳ phức tạp." },
-            { icon: "⚡", title: "Gửi Email tốc độ cao", desc: "Máy chủ Zozo EMA được xử lý gửi đa luồng với nhiều máy chủ gửi khác nhau." },
+            { icon: "⚡", title: "Gửi Email tốc độ cao", desc: "Máy chủ Getnow EMA được xử lý gửi đa luồng với nhiều máy chủ gửi khác nhau." },
             { icon: "📅", title: "Thiết lập lịch tự động", desc: "Dễ dàng tạo các chiến dịch tự động chăm sóc khách hàng theo kế hoạch lên sẵn của Doanh Nghiệp." },
             { icon: "🚀", title: "Triển khai nhanh chóng", desc: "Bạn dễ dàng thực hiện các chiến dịch Marketing tới khách hàng chỉ trong 15 phút." },
-            { icon: "📩", title: "120+ Mẫu Email phổ biến", desc: "Zozo EMA tích hợp sẵn các mẫu email phổ biến, đáp ứng đa năng các nhu cầu sử dụng." },
+            { icon: "📩", title: "120+ Mẫu Email phổ biến", desc: "Getnow EMA tích hợp sẵn các mẫu email phổ biến, đáp ứng đa năng các nhu cầu sử dụng." },
             { icon: "🛡", title: "Loại bỏ email rác", desc: "Sử dụng công nghệ xác thực email, loại bỏ 99% email ảo, giúp tăng tỷ lệ inbox." },
           ].map((feature, index) => (
             <div key={index} className="flex flex-col items-center text-center p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-80">
@@ -101,7 +107,7 @@ export default function HomePage() {
     <div className="text-center py-16 scroll-item opacity-0 translate-y-10 ">
         <h2 className="text-3xl font-bold text-gray-900">Giải pháp Email marketing phù hợp với những ai?</h2>
         <p className="text-gray-600 max-w-2xl mx-auto mt-2">
-          Dịch vụ Email Marketing Zozo EMA phù hợp với hầu hết những Doanh Nghiệp, cá nhân và tổ chức có nhu cầu bán hàng, tiếp thị, giới thiệu Doanh Nghiệp, giới thiệu sản phẩm.
+          Dịch vụ Email Marketing Getnow EMA phù hợp với hầu hết những Doanh Nghiệp, cá nhân và tổ chức có nhu cầu bán hàng, tiếp thị, giới thiệu Doanh Nghiệp, giới thiệu sản phẩm.
         </p>
 
         <div className="mt-10 space-y-8 max-w-4xl mx-auto">
@@ -144,10 +150,10 @@ export default function HomePage() {
         {[  
             { question: "Email marketing là gì?", answer: "Email marketing là phương pháp tiếp thị sử dụng email để giao tiếp với khách hàng." },
             { question: "Tại sao email của tôi hay vào spam?", answer: "Có một số lý do hay gặp như sau:\n(1) Tỷ lệ mở email (open rate) quá thấp: Để tăng tỷ lệ mở email bạn cần đặt tiêu đề thật thu hút gửi các nội dung có hữu ích đối với người nhận.\n(2) Nội dung email có nhiều các từ khóa quảng cáo như khuyến mãi, giảm giá... dễ kích hoạt bộ lọc spam dựa trên thuật toán trí tuệ nhân tạo của Gmail. \n(3) Tần suất gửi email quá nhiều, khiến người nhận khó chịu và đánh dấu email spam. \n(4) Danh sách email không chất lượng, đã bị khai thác bởi nhiều Doanh Nghiệp. " },
-            { question: "Zozo EMA có cung cấp dùng thử không?", answer: "Có, Zozo EMA có cung cấp DÙNG THỬ MIỄN PHÍ 10 ngày. Zozo để khách hàng trải nghiệm. Hiện tại EMA là nền tảng email marketing mạnh mẽ với nhiều tính năng tiện lợi. Bạn vui lòng truy cập vào: Dùng thử >> Để đăng ký trải nghiệm." },
-            { question: "Zozo EMA có thống kê được ai mở mail hay không?", answer: "Zozo EMA cung cấp báo cáo đầy đủ, trực quan bằng biểu đồ về:\n(1) Danh sách những người mở email.\n(2) Danh sách người bấm vào đường link trong email.\n(3) Danh sách email bị trả lại." },
-            { question: "Tỉ lệ inbox trên hệ thống email marketing của Zozo EMA có cao không?", answer: "Zozo EMA sử dụng công nghệ gửi mail hiện đại cùng các nền tảng SMTP hiện đại và được tin dùng nhiều nhất như SendGrid, Amazon... cho nên tỉ lệ vào inbox sẽ rất cao nếu thực hiện đúng." },
-            { question: "Tại sao tôi phải xác minh email?", answer: "Nhằm đảm bảo quyền lợi cho người dùng cũng như tuân thủ pháp luật, Zozo EMA yêu cầu người dùng xác minh sở hữu với email dùng để gửi, tránh tình trạng mạo danh gửi email lừa đảo." }
+            { question: "Getnow EMA có cung cấp dùng thử không?", answer: "Có, Getnow EMA có cung cấp DÙNG THỬ MIỄN PHÍ 10 ngày. Getnow để khách hàng trải nghiệm. Hiện tại EMA là nền tảng email marketing mạnh mẽ với nhiều tính năng tiện lợi. Bạn vui lòng truy cập vào: Dùng thử >> Để đăng ký trải nghiệm." },
+            { question: "Getnow EMA có thống kê được ai mở mail hay không?", answer: "Getnow EMA cung cấp báo cáo đầy đủ, trực quan bằng biểu đồ về:\n(1) Danh sách những người mở email.\n(2) Danh sách người bấm vào đường link trong email.\n(3) Danh sách email bị trả lại." },
+            { question: "Tỉ lệ inbox trên hệ thống email marketing của Getnow EMA có cao không?", answer: "Getnow EMA sử dụng công nghệ gửi mail hiện đại cùng các nền tảng SMTP hiện đại và được tin dùng nhiều nhất như SendGrid, Amazon... cho nên tỉ lệ vào inbox sẽ rất cao nếu thực hiện đúng." },
+            { question: "Tại sao tôi phải xác minh email?", answer: "Nhằm đảm bảo quyền lợi cho người dùng cũng như tuân thủ pháp luật, Getnow EMA yêu cầu người dùng xác minh sở hữu với email dùng để gửi, tránh tình trạng mạo danh gửi email lừa đảo." }
             // các câu hỏi khác
           ].map((faq, index) => {
             return (
