@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -8,16 +9,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo */}
           <div>
-            {/* <Image src="/logo.png" alt="Zozo Logo" width={100} height={50} /> */}
-            <p>© 2017 Zozo. Powered By INET</p>
+            <Image src="/images/logo.png" alt="Getnow Logo" width={300} height={50} />
+            <p>© 2025 Getnow. </p>
           </div>
 
-          {/* Kết nối với Zozo */}
+          {/* Kết nối với Getnow */}
           <div>
-            <h5 className="font-semibold mb-4">Kết nối với Zozo</h5>
+            <h5 className="font-semibold mb-4">Kết nối với Getnow</h5>
             <p>
-              <strong>Tổng đài:</strong> 1900.9260 <br />
-              <strong>Email:</strong> contact@zozo.vn
+              <strong>Tổng đài:</strong> 0392091532 <br />
+              <strong>Email:</strong> contact@Getnow.vn
             </p>
             <div className="flex space-x-4 mt-2">
               <Link href="#"><i className="fab fa-facebook fa-lg"></i></Link>
@@ -75,7 +76,7 @@ export default function Footer() {
 
         {/* Mobile Apps */}
         <div className="mt-8">
-          <h5 className="font-semibold mb-4">Zozo Mobile</h5>
+          <h5 className="font-semibold mb-4">Getnow Mobile</h5>
           <p>Quản lý bán hàng thuận tiện trên ứng dụng di động</p>
           <div className="flex space-x-4 mt-2">
             {/* <Link href="#"><Image src="/app-store.png" alt="App Store" width={150} height={50} /></Link>

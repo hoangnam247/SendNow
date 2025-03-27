@@ -1,7 +1,7 @@
 import React from 'react';
 import ContactListsList from './ContactListList';
 import Pagination from '../_components/Pagination';
-import { cookies } from 'next/headers';
+import { useToken } from '../contexts/TokenContext';
 
 // API fetching function
 const getLists = async (token, current, pageSize, query) => {
@@ -35,19 +35,13 @@ const getLists = async (token, current, pageSize, query) => {
 
 // Main component
 const ListsPage = async ({ searchParams }) => {
-  const cookieStore = cookies();
-  const token = cookieStore.get("token");
 
-  if (!token?.value) {
-    return <h2>Token is invalid or expired</h2>;
-  }
-
+  const  { token } = useToken();
+  
   // Parse and validate searchParams
   const pageSize = searchParams.pageSize ? parseInt(searchParams.pageSize) : 10;
   const current = searchParams.current ? parseInt(searchParams.current) : 1;
   const query = searchParams.query || "";
-
-  console.log("Query:", query);
 
   const { success, data: lists, total } = await getLists(
     token.value,

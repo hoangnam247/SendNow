@@ -50,9 +50,9 @@ export default function Example() {
           <a href="/" className="-m-1.5 p-1.5"> 
             <span className="sr-only">ZoZo</span>
             <Image
-              src="/images/zozo.png" // Đường dẫn tuyệt đối từ thư mục public
-              alt="ZoZo Logo"
-              width={100} // Đặt kích thước ảnh
+              src="/images/getnowww.png" // Đường dẫn tuyệt đối từ thư mục public
+              alt="getnow Logo"
+              width={170} // Đặt kích thước ảnh
               height={100}
             />
           </a>
