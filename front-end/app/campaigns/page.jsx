@@ -148,15 +148,6 @@ export default function CampaignPage() {
 
       {/* Filter and Search Bar */}
       <div className="flex items-center justify-between mb-4">
-        <div className="flex space-x-4">
-          <select className="border border-gray-300 rounded-lg p-2">
-            <option>Sắp xếp</option>
-          </select>
-          <select className="border border-gray-300 rounded-lg p-2">
-            <option>Ngày tạo</option>
-          </select>
-        </div>
-
         <div className="flex-grow mx-4">
           <input
             type="text"
@@ -201,12 +192,19 @@ export default function CampaignPage() {
               </h3>
             </Link>
             <p className="text-sm text-gray-500">
-              Cập nhật: {formatDate(campaign.updated_at)}
-            </p>
+            {campaign.sent_at === null
+              ? `Cập nhật: ${formatDate(campaign.updated_at)}`
+              : `Bắt đầu gửi: ${formatDate(campaign.sent_at)}`}
+          </p>
           </div>
         </div>
-        <span className="bg-pink-100 text-pink-700 px-2 py-1 rounded-full text-sm">MỚI</span>
-        <button className="bg-gray-500 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:bg-gray-600 transition duration-200 ease-in-out">
+        <span className="bg-pink-100 text-pink-700 px-2 py-1 rounded-full text-sm">
+          {campaign.sent_at === null ? 'MỚI' : 'LƯU TRỮ'}
+        </span>
+        {campaign.sent_at === null ? (
+        <button
+          className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition duration-200 ease-in-out"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -223,21 +221,74 @@ export default function CampaignPage() {
           </svg>
           <span>Chỉnh sửa</span>
         </button>
+      ) : (
+          <span
+            className="text-green-700 font-medium text-sm flex items-center space-x-1"
+            title="Đang hoàn thiện Click/Open Tracking "
+          >          
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-5 w-5"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M16.862 4.487l1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
+            />
+          </svg>
+          <span>Thống kê chiến dịch  </span>
+        </span>
+      )}
       </div>
     </div>
   ))
 )}
 
       {/* Pagination */}
-      <div className="flex justify-between items-center text-sm text-gray-500 mt-4">
-        <select className="border border-gray-300 rounded-lg p-2" onChange={(e) => getLists(query, e.target.value)}>
-          <option value="5">5</option>
-          <option value="10">10</option>
-        </select>
-        <p className="text-sm">Trang {currentPage} của {totalPages}</p>
-        <button onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}>Trang trước</button>
-        <button onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}>Trang sau</button>
-      </div>
+        <div className="flex justify-between items-center text-sm text-gray-500 mt-4">
+          <p className="text-sm">
+            Trang {currentPage} của {totalPages}
+          </p>
+
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+            >
+              Trang trước
+            </button>
+
+            {[...Array(totalPages)].map((_, i) => {
+              const page = i + 1;
+              return (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`px-3 py-1 rounded ${
+                    currentPage === page
+                      ? 'bg-teal-600 text-white'
+                      : 'bg-gray-100 hover:bg-gray-200'
+                  }`}
+                >
+                  {page}
+                </button>
+              );
+            })}
+
+            <button
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+              }
+              className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+            >
+              Trang sau
+            </button>
+          </div>
+        </div>
     </div>
   );
 }

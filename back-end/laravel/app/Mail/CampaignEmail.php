@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Address;  // Thêm class Address
 use App\Models\Campaign; // Đảm bảo bạn import model Campaign
 use Illuminate\Contracts\Queue\ShouldQueue;  // Thêm interface này
 use Illuminate\Queue\SerializesModels;
-use Tijsverkoyen\CssToInlineStyles\CssToInlineStyles;
+use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 use Illuminate\Support\Facades\Log;
 
 class CampaignEmail extends Mailable implements ShouldQueue
@@ -56,24 +56,53 @@ class CampaignEmail extends Mailable implements ShouldQueue
         );
     }
 
+
     /**
      * Nội dung của email.
      */
-    public function content(): Content
-    {
-        // Áp dụng inline CSS vào nội dung email
+public function build(): self
+{
+    // 1. Render view với dữ liệu
+    $htmlContent = view('mail.campaign', [
+        'content' => $this->campaignContent,
+        'css' => $this->cssContent,
+    ])->render();
 
-        $htmlContent = view('mail.campaign', [
-            'campaignContent' => $this->campaignContent,
-            'cssContent' => $this->cssContent, 
-        ])->render();
+    // 2. Chuẩn bị CSS (có thể kết hợp nhiều nguồn)
+    $fullCss = $this->prepareCss();
 
-        $cssToInline = new CssToInlineStyles();
-        $htmlWithInlineCss = $cssToInline->convert($htmlContent);
+    // 3. Cấu hình và thực hiện inline CSS
+    $htmlWithInlineCss = $this->inlineCss($htmlContent, $fullCss);
 
+    // 4. Gửi email với nội dung đã xử lý
+    return $this->html($htmlWithInlineCss)
+                ->subject('Campaign Email');
+}
+
+protected function prepareCss(): string
+{
+    $css = $this->cssContent;
+  
+    return $css;
+}
+
+protected function inlineCss(string $html, string $css): string
+{
+    try {
+        $converter = new CssToInlineStyles();
         
-        return new Content(
-            html: $htmlWithInlineCss
+        return $converter->convert(
+            $html,
+            $css,
+            [
+                'strip_original_style_tags' => false,
+                'use_inline_styles_block' => true,
+                'exclude_media_queries' => false
+            ]
         );
+    } catch (\Exception $e) {
+        Log::error('CSS inlining failed: '.$e->getMessage());
+        return $html;
     }
+}
 }

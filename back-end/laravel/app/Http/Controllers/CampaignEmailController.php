@@ -35,7 +35,7 @@ class CampaignEmailController extends Controller
 
     // Tiến hành gửi email cho các contacts
     $senderEmail = env('MAIL_FROM_ADDRESS');
-
+ 
     foreach ($contacts as $contact) {
         try {
             Log::info('Sending email to: ' . $contact->email); // Log chỉ email của contact
