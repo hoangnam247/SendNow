@@ -23,14 +23,14 @@ const NavigationBar = () => {
   // Xác định các mục menu với tên và icon tương ứng
   const items = [
     { label: "Tổng quan", icon: ArrowTrendingUpIcon, link: "overview" }, // Thay thế 'tổng-quan' bằng 'overview'
-    { label: "Cấu Hình ( Bảo Trì )", icon: Cog6ToothIcon, link: "edit" },
+    { label: "Cấu Hình ( Bảo Trì )", icon: Cog6ToothIcon, link: "edit_overview" },
     { label: "Liên hệ", icon: UsersIcon, link: "subscribers" },
-    { label: "Xác thực email", icon: EnvelopeIcon, link: "email-verification" },
+    { label: "Xác thực email ( Đang phát triển ) ", icon: EnvelopeIcon, link: "email-verification" },
   ];
 
   // Kiểm tra nếu trang hiện tại có chứa 'subscribers', 'edit', hoặc 'overview'
   const isSubscribersPage = path.includes("subscribers");
-  const isEditPage = path.includes("edit");
+  const isEditPage = path.includes("edit_overview");
   const isOverviewPage = path.includes("overview");
 
   return (

@@ -72,14 +72,11 @@ export default function Form({
         {/* Settings */}
         <div className="space-y-6">
           <div className="flex items-start space-x-4">
-            <input
-              type="checkbox"
-              className="h-5 w-5 mt-1 text-teal-600 form-checkbox"
-            />
+          
             <div>
               <h3 className="text-lg font-semibold text-gray-900">Theo dõi lượt mở</h3>
               <p className="text-sm text-gray-600">
-                Theo dõi danh sách khách hàng đã mở email trong chiến dịch đã gửi
+                Theo dõi danh sách khách hàng đã mở email trong chiến dịch đã gửi ( Đang phát triển ) 
               </p>
             </div>
           </div>

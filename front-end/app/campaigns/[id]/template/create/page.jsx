@@ -57,38 +57,39 @@ export default function EmailTemplate() {
     fetchCampaignData(); // Gọi API
 
   }, [id, token]);
+  
   // Hàm lấy danh sách mẫu email từ API
+  const fetchEmailTemplates = async (query = '', page = 1) => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/email-template?q=${query}&page=${page}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+
+      const result = await response.json();
+
+      if (result.success && result.data && Array.isArray(result.data.data)) {
+        setEmailTemplates(result.data.data); // Lấy dữ liệu mẫu email từ result.data.data
+        setTotalPages(result.data.last_page); // Cập nhật tổng số trang
+        setCurrentPage(result.data.current_page); // Cập nhật trang hiện tại
+      } else {
+        console.error("Dữ liệu không hợp lệ:", result);
+      }
+    } catch (error) {
+      console.error('Lỗi khi lấy danh sách mẫu email:', error);
+      setError('Lỗi khi lấy mẫu email');
+    } finally {
+      setLoading(false); // Kết thúc quá trình loading
+    }
+  };
+
+  // Kết nối API khi `query` hoặc `currentPage` thay đổi
   useEffect(() => {
     if (showTemplates) {
-      const fetchEmailTemplates = async (query = '', page = 1) => {
-        try {
-          const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/email-template?q=${query}&page=${page}`, {
-            method: 'GET',
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-
-          });
-
-          const result = await response.json();
-
-          if (result.success && result.data && Array.isArray(result.data.data)) {
-            setEmailTemplates(result.data.data); // Lấy dữ liệu mẫu email từ result.data.data
-            setTotalPages(result.data.last_page); // Cập nhật tổng số trang
-            setCurrentPage(result.data.current_page); // Cập nhật trang hiện tại
-          } else {
-            console.error("Dữ liệu không hợp lệ:", result);
-          }
-        } catch (error) {
-          console.error('Lỗi khi lấy danh sách mẫu email:', error);
-          setError('Lỗi khi lấy mẫu email');
-        } finally {
-          setLoading(false); // Kết thúc quá trình loading
-        }
-      };
-
       setLoading(true); // Bắt đầu quá trình loading
       fetchEmailTemplates(); // Gọi hàm lấy dữ liệu mẫu email
     }
@@ -101,9 +102,11 @@ export default function EmailTemplate() {
       fetchEmailTemplates(query, currentPage); // Gọi lại API
     }
   }, [query, currentPage]);
+
   const toggleTemplates = () => {
     setShowTemplates(!showTemplates);
   };
+
 
   // Hàm cập nhật mẫu vào campaign ngay khi nhấp vào mẫu
   const handleSubmit = async (templateId) => {
