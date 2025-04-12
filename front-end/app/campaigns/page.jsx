@@ -184,7 +184,6 @@ export default function CampaignPage() {
     <div key={campaign.id} className="bg-white p-4 rounded-lg shadow-md mb-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
-          <input type="checkbox" className="form-checkbox h-5 w-5 text-gray-600" />
           <div>
             <Link href={`/campaigns/${campaign.id}/recipients`}>
               <h3 className="text-teal-600 font-semibold cursor-pointer hover:underline">
@@ -226,20 +225,6 @@ export default function CampaignPage() {
             className="text-green-700 font-medium text-sm flex items-center space-x-1"
             title="Đang hoàn thiện Click/Open Tracking "
           >          
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="h-5 w-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M16.862 4.487l1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
-            />
-          </svg>
           <span>Thống kê chiến dịch  </span>
         </span>
       )}

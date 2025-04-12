@@ -23,7 +23,7 @@ const NavigationBar = () => {
   // Xác định các mục menu với tên và icon tương ứng
   const items = [
     { label: "Tổng quan", icon: ArrowTrendingUpIcon, link: "overview" }, // Thay thế 'tổng-quan' bằng 'overview'
-    { label: "Cấu Hình", icon: Cog6ToothIcon, link: "edit" },
+    { label: "Cấu Hình ( Bảo Trì )", icon: Cog6ToothIcon, link: "edit" },
     { label: "Liên hệ", icon: UsersIcon, link: "subscribers" },
     { label: "Xác thực email", icon: EnvelopeIcon, link: "email-verification" },
   ];

@@ -111,7 +111,7 @@ export default function Example() {
         </PopoverGroup>
         ) : (
           <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-          <a href="/overview" className="text-lg font-semibold text-gray-900 hover:text-orange-600 transition">
+          <a href="/campaigns" className="text-lg font-semibold text-gray-900 hover:text-orange-600 transition">
               Bảng giá
           </a>
           <a href="/campaigns" className="text-lg font-semibold text-gray-900 hover:text-orange-600 transition">

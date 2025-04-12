@@ -9,7 +9,6 @@ export default function CreateSubscribers({ params }) {
   const { token } = useToken();
   const [loading, setLoading] = useState({ lists: true, contacts: true });
   const [lists, setLists] = useState([]);
-  const [contacts, setContacts] = useState([]);
   const [error, setError] = useState('');
   const router = useRouter();
   const { id } = params; // Lấy id từ params

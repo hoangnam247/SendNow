@@ -4,9 +4,8 @@ import { cookies } from 'next/headers';
 
 export const handleCreateContactLists = async (formData) => {
   // Retrieve the token from cookies
-  const token = cookies().get('token')?.value;
-  
-
+  const cookieStore = cookies();
+  const token = cookieStore.get('access_token')?.value;
   
   // Check if the token exists
   if (!token) {
