@@ -96,7 +96,7 @@ export default function CampaignDetail() {
       const data = await response.json();
       if (response.ok) {
         // Chuyển hướng sang trang tiếp theo
-        router.push(`/campaigns/${id}/setup`);
+        router.push(`/campaigns/${id}/confirm`);
       } else {
         setError(data.message || 'Có lỗi xảy ra khi cập nhật chiến dịch');
       }

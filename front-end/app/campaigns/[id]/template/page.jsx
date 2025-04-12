@@ -119,13 +119,13 @@ export default function CampaignEmailTemplate() {
 
         {/* Continue Button */}
         <div className="mt-10">
+        <Link href={`/campaigns/${id}/schedule`}>
           <button className="bg-gray-800 text-white py-3 px-6 rounded-lg hover:bg-gray-900">
             Tiếp tục
-          </button>
+        </button>
+          </Link>
         </div>
       </div>
-
-    
     </div>
   );
 }

@@ -152,13 +152,13 @@ export default function Home() {
                      `Đặt lịch gửi vào (${Math.round(diffDays)} ngày sau)` 
                 ) : diffDays < -1 ? (
                     // Trường hợp nếu đã qua
-                    `Đặt lịch gửi vào (${Math.abs(Math.round(diffDays))} ngày trước)`
+                    `Đặt lịch gửi vào (${Math.abs(Math.round(diffDays))} ngày trước) Nếu xác nhận gửi sẽ gửi ngay bây giờ `
                 ) : diffDays < 1 && diffDays > 0 ? (
                     // Trường hợp nếu dưới 1 ngày, tính theo giờ
-                    `Đặt lịch gửi vào (${Math.round(diffHours)} giờ sau)`
+                    `Đặt lịch gửi vào (${Math.round(diffHours)} giờ sau)  `
                 ) : diffDays > -1 && diffDays < 0 ? (
                     // Trường hợp nếu dưới 1 ngày và đã qua, tính theo giờ
-                    `Đặt lịch gửi vào (${Math.abs(Math.round(diffHours))} giờ trước)`
+                    `Đặt lịch gửi vào (${Math.abs(Math.round(diffHours))} giờ trước) Nếu xác nhận gửi sẽ gửi ngay bây giờ `
                 ) : (
                     // Trường hợp nếu là ngày hôm nay
                     "Đặt lịch vào ngày hôm nay"
