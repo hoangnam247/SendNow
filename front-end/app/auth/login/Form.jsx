@@ -24,7 +24,7 @@ export default function Form() {
     >
       <div className="mb-4">
         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-          Email
+          Email : namhoang.240102@gmail.com
         </label>
         <input
           type="email"
@@ -37,7 +37,7 @@ export default function Form() {
       </div>
       <div className="mb-4">
         <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-          Mật khẩu
+          Mật khẩu : 123456
         </label>
         <input
           type="password"
